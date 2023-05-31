@@ -1,0 +1,13 @@
+.centered {
+    display: grid;
+    min-height: 100vh;
+}
+
+.centered__content {
+    place-self: center;
+    background-color: var(--background-color-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--stroke-color);
+    min-width: 340px;
+    padding: 50px 30px 30px;
+}

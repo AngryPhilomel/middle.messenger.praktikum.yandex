@@ -1,0 +1,26 @@
+:root {
+    --accent-color: #3369F3;
+    --background-color-main: #000000;
+    --background-color-secondary: #1D2023;
+
+    --text-color-heading: #FFFFFF;
+    --text-color-main: #FAFAFA;
+    --text-color-secondary: #969FA8;
+
+    --stroke-color: rgba(127, 140, 153, 0.35);
+
+    --controls-background: rgba(98, 108, 119, 0.25);
+    --controls-hover: #FFFFFF;
+    --controls-focus: #45B6FC;
+;
+}
+
+body {
+    color: var(--text-color-main);
+    background-color: var(--background-color-main);
+    font-family: 'Roboto', sans-serif;
+}
+
+input {
+    box-sizing: border-box;
+}

@@ -16,6 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
             {label: 'Phone', name: 'phone', type:'text'},
         ],
         formButton: {text: 'Sign up'},
-        altButton: {text: 'Sign in', href: '../index.html'}
+        altButton: {text: 'Sign in', href: './login.html'}
     })
 })

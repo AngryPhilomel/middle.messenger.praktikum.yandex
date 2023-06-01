@@ -5,5 +5,10 @@ export default `
     <label class="${styles.input__label}">{{label}}
     <input class="${styles.input__input}" name="{{name}}" type="{{type}}" autocomplete="off" "/>
     </label>
+        <span class="${styles.input__error}">
+            {{#if error}}
+                {{error}}
+            {{/if}}
+        </span>
     </div>
 `

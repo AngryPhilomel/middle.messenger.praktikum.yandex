@@ -12,6 +12,8 @@
     --controls-background: rgba(98, 108, 119, 0.25);
     --controls-hover: #FFFFFF;
     --controls-focus: #45B6FC;
+
+    --error-color: #FFA080;
 ;
 }
 

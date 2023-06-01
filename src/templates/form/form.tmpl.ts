@@ -6,7 +6,7 @@ export default`
             <div class="${styles['form']}">
                 <h1 class="${styles['form__title']}">{{heading}}</h1>
                 <form class="${styles['form__form']}">
-                    <div>
+                    <div class="${styles['form__inputs']}">
                     {{#each inputs}}
                         {{>input name=name label=label type=type}}
                     {{/each}}

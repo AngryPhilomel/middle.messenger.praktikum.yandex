@@ -33,6 +33,11 @@
     border: 1px solid var(--controls-focus);
 }
 
+.input__input:disabled {
+    color: var(--text-color-secondary);
+    border: 1px solid var(--stroke-color);
+}
+
 .input__error {
     color: var(--error-color);
     font-size: 12px;

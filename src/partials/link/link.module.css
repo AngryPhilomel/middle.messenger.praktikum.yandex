@@ -4,6 +4,10 @@
     outline: none;
 }
 
+.link_negative {
+    color: var(--error-color);
+}
+
 .link:hover {
     text-decoration: underline;
 }

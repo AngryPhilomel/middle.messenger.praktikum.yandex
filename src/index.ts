@@ -3,8 +3,10 @@ import centeredFullscreen from './partials/centeredFullscreen/centeredFullscreen
 import input from './partials/input/input.prt.ts'
 import button from './partials/button/button.prt.ts'
 import link from './partials/link/link.prt.ts'
+import avatar from './partials/avatar/avatar.prt.ts'
 
 Handlebars.registerPartial('centeredFullscreen', centeredFullscreen);
 Handlebars.registerPartial('input', input);
 Handlebars.registerPartial('button', button);
 Handlebars.registerPartial('link', link);
+Handlebars.registerPartial('avatar', avatar);

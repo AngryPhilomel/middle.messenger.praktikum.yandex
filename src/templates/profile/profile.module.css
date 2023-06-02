@@ -1,0 +1,14 @@
+.profile {}
+
+.profile__avatar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.profile__buttons {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

@@ -23,6 +23,7 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-input {
+input,
+div {
     box-sizing: border-box;
 }

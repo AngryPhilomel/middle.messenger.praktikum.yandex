@@ -7,7 +7,10 @@ export default `
             {{#if small}}
                 ${styles['avatar__image_small']}
             {{/if}}
-        " 
+        "
+        {{#if id}}
+           id="{{id}}"
+        {{/if}}
         {{#if src}}
             src={{src}}
         {{else}}
@@ -16,7 +19,7 @@ export default `
         ></image>
         {{#if changeable}}
                 <div class="${styles['avatar__menu']}">
-                        {{> link text='change avatar' href='../../index.html'}}
+                        {{> link text='change avatar' href=href}}
                 </div>
         {{/if}}
         

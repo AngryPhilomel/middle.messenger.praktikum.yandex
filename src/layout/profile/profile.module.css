@@ -1,12 +1,12 @@
-.profile {}
+.profile-layout {}
 
-.profile__avatar {
+.profile-layout__avatar {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.profile__buttons {
+.profile-layout__buttons {
     margin-top: 60px;
     display: flex;
     flex-direction: column;

@@ -10,6 +10,12 @@ export default `
         {{#if value}}
            value={{value}}
         {{/if}}
+        {{#if accept}}
+           accept={{accept}}
+        {{/if}}
+        {{#if id}}
+           id={{id}}
+        {{/if}}
         />
     </label>
         <span class="${styles['input__error']}">

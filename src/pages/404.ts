@@ -1,5 +1,5 @@
 import Handlebars from "handlebars";
-import error from "../templates/error/error.tmpl.ts";
+import error from "../layout/error/error.tmpl.ts";
 
 document.addEventListener('DOMContentLoaded', () => {
     const root = document.querySelector('#app')

@@ -1,5 +1,5 @@
 import Handlebars from "handlebars";
-import profile from "../templates/profile/profile.tmpl.ts";
+import profile from "./profile.tmpl.ts";
 
 document.addEventListener('DOMContentLoaded', () => {
     const root = document.querySelector('#app')

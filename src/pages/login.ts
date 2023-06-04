@@ -1,5 +1,5 @@
 import Handlebars from "handlebars";
-import form from "../templates/form/form.tmpl.ts";
+import form from "../layout/form/form.tmpl.ts";
 
 document.addEventListener('DOMContentLoaded', () => {
     const root = document.querySelector('#app')

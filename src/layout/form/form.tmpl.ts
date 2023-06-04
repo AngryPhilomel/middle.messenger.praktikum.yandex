@@ -3,7 +3,7 @@ import styles from './form.module.css'
 export default`
     {{#> centeredFullscreen}}
         {{#*inline "content"}}
-            <div class="${styles['form']}">
+            <main class="${styles['form']}">
                 <h1 class="${styles['form__title']}">{{heading}}</h1>
                 <form class="${styles['form__form']}">
                     <div class="${styles['form__inputs']}">
@@ -16,7 +16,7 @@ export default`
                         {{>link text=altButton.text href=altButton.href}}
                     </div>
                 </form>
-            </div>
+            </main>
         {{/inline}}
     {{/centeredFullscreen}}
 `

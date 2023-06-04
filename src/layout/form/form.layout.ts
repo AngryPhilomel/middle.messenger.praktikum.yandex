@@ -7,13 +7,10 @@ export default`
                 <h1 class="${styles['form__title']}">{{heading}}</h1>
                 <form class="${styles['form__form']}">
                     <div class="${styles['form__inputs']}">
-                    {{#each inputs}}
-                        {{>input name=name label=label type=type}}
-                    {{/each}}
+                        {{> inputs}}
                     </div>
                     <div class="${styles['form__buttons']}">
-                        {{>button text=formButton.text type='submit'}}
-                        {{>link text=altButton.text href=altButton.href}}
+                        {{> buttons}}
                     </div>
                 </form>
             </main>

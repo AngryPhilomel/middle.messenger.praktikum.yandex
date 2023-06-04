@@ -4,7 +4,7 @@ export default`
         {{#*inline "avatar"}}
             {{> avatar src=user.avatar changeable=true href='../change-avatar/change-avatar.html'}}
         {{/inline}}'
-        {{#*inline "content"}}
+        {{#*inline "inputs"}}
                 {{> input name='email' value=user.email label='Email' type='email' disabled=true }}
                 {{> input name='login' value=user.login label='Login' type='text' disabled=true }}
                 {{> input name='first_name' value=user.first_name label='First name' type='text' disabled=true }}

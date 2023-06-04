@@ -1,5 +1,5 @@
 import Handlebars from "handlebars";
-import form from "../layout/form/form.tmpl.ts";
+import form from "./register.tmpl.ts";
 
 document.addEventListener('DOMContentLoaded', () => {
     const root = document.querySelector('#app')
@@ -16,6 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
             {label: 'Phone', name: 'phone', type:'text'},
         ],
         formButton: {text: 'Sign up'},
-        altButton: {text: 'Sign in', href: './login.html'}
+        altButton: {text: 'Sign in', href: '../login/login.html'}
     })
 })

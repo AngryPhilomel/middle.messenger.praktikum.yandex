@@ -3,7 +3,7 @@ export default`
     {{#> profileLayout}}
         {{#*inline "avatar"}}
         {{/inline}}
-        {{#*inline "content"}}
+        {{#*inline "inputs"}}
                 {{> input name='email' value=user.email label='Email' type='email'}}
                 {{> input name='login' value=user.login label='Login' type='text'}}
                 {{> input name='first_name' value=user.first_name label='First name' type='text'}}

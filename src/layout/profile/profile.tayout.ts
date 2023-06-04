@@ -7,7 +7,7 @@ export default `
                 {{> avatar}}
             </div>
             <form>
-                {{> content}}
+                {{> inputs}}
                 <div class="${styles['profile-layout__buttons']}">
                     {{> buttons}}
                 </div>

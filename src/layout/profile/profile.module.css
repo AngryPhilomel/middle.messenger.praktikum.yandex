@@ -1,4 +1,6 @@
-.profile-layout {}
+.profile-layout__back {
+    margin-bottom: 20px;
+}
 
 .profile-layout__avatar {
     width: 100%;

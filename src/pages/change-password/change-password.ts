@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const template = Handlebars.compile(changePassword)
 
     root!.innerHTML = template({
+        backHref: '../profile/profile.html',
         user: {
             id: 123,
             first_name: "Petya",

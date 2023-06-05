@@ -3,6 +3,9 @@ export default `
 {{#> centeredFullscreen}}
     {{#*inline "content"}}
         <main class="${styles['profile-layout']}">
+            <div class="${styles['profile-layout__back']}">
+                {{> link text='❮ Back' href=backHref}}
+            </div>
             <div class="${styles['profile-layout__avatar']}">
                 {{> avatar}}
             </div>

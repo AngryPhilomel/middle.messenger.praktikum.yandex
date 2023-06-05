@@ -5,7 +5,7 @@ export default`
         {{#*inline "avatar"}}
             {{> avatar src=user.avatar id='avatar'}}
         {{/inline}}
-        {{#*inline "continputsent"}}
+        {{#*inline "inputs"}}
                 {{> input id='avatarUpload' name='avatar' label='Avatar' type='file' accept='image/*' }}
         {{/inline}}
         {{#*inline "buttons"}}

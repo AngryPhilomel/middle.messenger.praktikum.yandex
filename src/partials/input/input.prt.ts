@@ -7,6 +7,9 @@ export default `
         {{#if disabled}}
            disabled={{disabled}}
         {{/if}}
+        {{#if placeholder}}
+           placeholder={{placeholder}}
+        {{/if}}
         {{#if value}}
            value={{value}}
         {{/if}}

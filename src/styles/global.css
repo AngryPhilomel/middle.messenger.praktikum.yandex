@@ -1,29 +1,35 @@
 :root {
-    --accent-color: #3369F3;
-    --background-color-main: #000000;
-    --background-color-secondary: #1D2023;
+  --accent-color: #3369f3;
+  --background-color-main: #000000;
+  --background-color-secondary: #1d2023;
+  --background-color-tertiary: #2c3135;
 
-    --text-color-heading: #FFFFFF;
-    --text-color-main: #FAFAFA;
-    --text-color-secondary: #969FA8;
-    --text-color-tertiary: #626C77;
+  --text-color-heading: #ffffff;
+  --text-color-main: #fafafa;
+  --text-color-secondary: #969fa8;
+  --text-color-tertiary: #626c77;
 
-    --stroke-color: rgba(127, 140, 153, 0.35);
+  --stroke-color: rgba(127, 140, 153, 0.35);
 
-    --controls-background: rgba(98, 108, 119, 0.25);
-    --controls-hover: #FFFFFF;
-    --controls-focus: #45B6FC;
+  --controls-background: rgba(98, 108, 119, 0.25);
+  --controls-hover: #ffffff;
+  --controls-focus: #45b6fc;
 
-    --error-color: #FFA080;
-;
+  --chat-focus: rgba(51, 105, 243, 0.3);
+
+  --error-color: #ffa080;
+
+  --chat-header-height: 120px;
 }
 
 body {
-    color: var(--text-color-main);
-    background-color: var(--background-color-main);
-    font-family: 'Roboto', sans-serif;
+  color: var(--text-color-main);
+  background-color: var(--background-color-main);
+  font-family: "Roboto", sans-serif;
 }
 
-*, *::before, *::after {
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }

@@ -10,7 +10,7 @@ import profileLayout from "./layout/profile/profile.tayout.ts";
 import errorLayout from "./layout/error/error.layout.ts";
 import formLayout from "./layout/form/form.layout.ts";
 import twoSide from "./layout/two-side/two-side.layout.ts";
-import {toLocalTime} from "./utils/toLocalTime.ts";
+import { toLocalTime } from "./utils/toLocalTime.ts";
 
 Handlebars.registerPartial("centeredFullscreen", centeredFullscreen);
 Handlebars.registerPartial("input", input);
@@ -25,4 +25,4 @@ Handlebars.registerPartial("errorLayout", errorLayout);
 Handlebars.registerPartial("formLayout", formLayout);
 Handlebars.registerPartial("twoSide", twoSide);
 
-Handlebars.registerHelper("toLocalTime", toLocalTime)
+Handlebars.registerHelper("toLocalTime", toLocalTime);

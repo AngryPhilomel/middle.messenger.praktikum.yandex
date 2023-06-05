@@ -1,5 +1,5 @@
 //language=hbs
-export default`
+export default `
     {{#> errorLayout}}
         {{#*inline "errorCode"}}
             404
@@ -8,4 +8,4 @@ export default`
             Not found
         {{/inline}}
     {{/errorLayout}}
-`
+`;

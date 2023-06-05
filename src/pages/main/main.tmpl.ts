@@ -1,6 +1,5 @@
 //language=hbs
-
-export default`
+export default `
     {{#> twoSide}}
         {{#* inline "side"}}
             {{#each chats as |c|}}
@@ -11,4 +10,4 @@ export default`
             {{> emptyChat }}
         {{/inline}}
     {{/twoSide}}
-`
+`;

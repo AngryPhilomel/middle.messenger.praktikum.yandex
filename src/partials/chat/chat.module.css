@@ -7,8 +7,8 @@
     row-gap: 4px;
     column-gap: 10px;
     grid-template-areas:
-    "Avatar Name Time"
-    "Avatar Message New";
+        "Avatar Name Time"
+        "Avatar Message New";
     padding: 12px 10px;
     border-top: 1px solid var(--stroke-color);
     overflow: hidden;

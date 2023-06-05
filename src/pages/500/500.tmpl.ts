@@ -1,5 +1,5 @@
 //language=hbs
-export default`
+export default `
     {{#> errorLayout}}
         {{#*inline "errorCode"}}
             500
@@ -8,4 +8,4 @@ export default`
             We're already fixing it
         {{/inline}}
     {{/errorLayout}}
-`
+`;

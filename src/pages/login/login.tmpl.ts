@@ -1,5 +1,5 @@
 //language=hbs
-export default`
+export default `
     {{#> formLayout}}
         {{#*inline "inputs"}}
             {{#each inputs}}
@@ -11,4 +11,4 @@ export default`
             {{>link text=altButton.text href=altButton.href}}
         {{/inline}}
     {{/formLayout}}
-`
+`;

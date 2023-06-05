@@ -1,5 +1,5 @@
 .empty-chat {
-   display: grid;
+    display: grid;
     height: 100vh;
 }
 .empty-chat > p {

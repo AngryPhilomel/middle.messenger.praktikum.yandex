@@ -7,7 +7,13 @@ export default `
             {{/each}}
         {{/inline}}
         {{#* inline "main"}}
-            {{> emptyChat }}
+            {{#if selectedChat}}
+                {{> selectedChat chat=selectedChat }}
+            {{else}}
+                {{> emptyChat }}
+            {{/if}}
         {{/inline}}
     {{/twoSide}}
 `;
+
+

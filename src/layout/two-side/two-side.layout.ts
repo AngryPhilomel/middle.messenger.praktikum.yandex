@@ -8,9 +8,9 @@ export default `
                 {{> link text='Profile ❯' href='../../pages/profile/profile.html'}}
                 {{> input placeholder='Search'}}
             </div>
-            <div class="${styles["two-side__aside__chats"]}">
+            <ul class="${styles["two-side__aside__chats"]}">
                 {{> side}}
-            </div>
+            </ul>
         </aside>
         <main class="${styles["two-side__main"]}">
             {{> main}}

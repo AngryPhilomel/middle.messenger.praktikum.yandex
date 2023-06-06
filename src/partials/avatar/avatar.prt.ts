@@ -1,11 +1,14 @@
 import styles from "./avatar.module.css";
-import none from "./none.svg";
+import none from "./assets/none.svg";
 //language=hbs
 export default `
     <div class="${styles["avatar"]}">
         <image class="${styles["avatar__image"]}
             {{#if small}}
                 ${styles["avatar__image_small"]}
+            {{/if}}
+            {{#if medium}}
+                ${styles["avatar__image_medium"]}
             {{/if}}
             "
             {{#if id}}

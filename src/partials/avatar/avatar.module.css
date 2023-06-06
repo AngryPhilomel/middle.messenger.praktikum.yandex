@@ -34,7 +34,12 @@
     user-select: none;
 }
 
-.avatar__image_small {
+.avatar__image_medium {
     width: 47px;
     height: 47px;
+}
+
+.avatar__image_small {
+    width: 34px;
+    height: 34px;
 }

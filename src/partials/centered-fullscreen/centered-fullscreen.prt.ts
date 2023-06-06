@@ -1,4 +1,4 @@
-import styles from "./centeredFullscreen.module.css";
+import styles from "./centered-fullscreen.module.css";
 //language=hbs
 export default `
     <div class="${styles["centered"]}">

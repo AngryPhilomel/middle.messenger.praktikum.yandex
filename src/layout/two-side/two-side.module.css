@@ -25,4 +25,6 @@
 .two-side__aside__chats {
     overflow: scroll;
     height: calc(100vh - var(--chat-header-height));
+    margin: 0;
+    padding: 0;
 }

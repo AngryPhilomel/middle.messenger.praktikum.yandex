@@ -1,0 +1,16 @@
+.profile-layout__back {
+    margin-bottom: 20px;
+}
+
+.profile-layout__avatar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-layout__buttons {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

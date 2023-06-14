@@ -1,4 +1,4 @@
-//language=hbs
+// language=hbs
 export default `
     {{#> formLayout}}
         {{#*inline "inputs"}}
@@ -7,8 +7,10 @@ export default `
             {{/each}}
         {{/inline}}
         {{#*inline "buttons"}}
-            {{>button text=formButton.text type='submit'}}
+            {{{ SubmitButton }}}
             {{>link text=altButton.text href=altButton.href}}
         {{/inline}}
     {{/formLayout}}
 `;
+
+// {{>button text=formButton.text type='submit'}}

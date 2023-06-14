@@ -12,13 +12,13 @@
     padding: 30px 20px 20px;
 }
 
-@media (min-width: 374px) {
+@media (width >= 374px) {
     .centered {
         padding: 30px;
     }
 }
 
-@media (min-width: 767px) {
+@media (width >= 767px) {
     .centered__content {
         width: auto;
         min-width: 400px;

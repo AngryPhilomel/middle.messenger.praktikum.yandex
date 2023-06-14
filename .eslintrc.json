@@ -1,0 +1,6 @@
+{
+  "extends": ["airbnb", "plugin:prettier/recommended"],
+  "rules": {
+    "import/no-extraneous-dependencies": "off"
+  }
+}

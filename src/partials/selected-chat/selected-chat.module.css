@@ -9,6 +9,7 @@
     height: 100vh;
     padding: 10px 20px;
 }
+
 .selected__header {
     display: flex;
     align-items: center;
@@ -16,10 +17,12 @@
     width: 100%;
     height: 100%;
 }
+
 .selected__header__chat-name {
     margin-left: 10px;
     font-size: 13px;
 }
+
 .selected__header__menu {
     margin-left: auto;
     background: url("./assets/menu.svg") no-repeat 50% 50%;
@@ -29,14 +32,17 @@
     border: none;
     outline: none;
 }
+
 .selected__header__menu:hover,
 .selected__header__menu:focus {
     background-color: var(--chat-focus);
 }
+
 .selected-messages {
     place-self: center;
     color: var(--text-color-secondary);
 }
+
 .selected__footer {
     position: relative;
     display: flex;
@@ -46,10 +52,12 @@
     width: 100%;
     height: 100%;
 }
+
 .selected__footer__input {
     margin: 0 20px;
     width: 100%;
 }
+
 .selected__footer__button {
     flex-shrink: 0;
     width: 32px;
@@ -59,13 +67,16 @@
     outline: none;
     transition: transform 100ms ease-in-out;
 }
+
 .selected__footer__button:hover,
 .selected__footer__button:focus {
     transform: rotate(-30deg);
 }
+
 .selected__footer__button_attach {
     background: url("./assets/attach.svg") no-repeat 50% 50%;
 }
+
 .selected__footer__button_send {
     background: url("./assets/send.svg") no-repeat 50% 50% var(--accent-color);
 }
@@ -84,9 +95,11 @@
     background-color: var(--background-color-secondary);
     border-radius: 12px;
 }
+
 .selected__footer__attach-menu[data-visible="false"] {
     display: none;
 }
+
 .selected__footer__attach-menu > li {
     list-style: none;
     font-size: 12px;
@@ -100,12 +113,15 @@
     height: 22px;
     margin-right: 15px;
 }
+
 .selected__footer__attach-menu > li:nth-of-type(1)::before {
     background: url("./assets/photo.svg") no-repeat 50% 50%;
 }
+
 .selected__footer__attach-menu > li:nth-of-type(2)::before {
     background: url("./assets/file.svg") no-repeat 50% 50%;
 }
+
 .selected__footer__attach-menu > li:nth-of-type(3)::before {
     background: url("./assets/geo.svg") no-repeat 50% 50%;
 }

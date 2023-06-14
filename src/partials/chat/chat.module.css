@@ -21,10 +21,12 @@
 .chat__avatar {
     grid-area: Avatar;
 }
+
 .chat__name {
     grid-area: Name;
     font-size: 13px;
 }
+
 .chat__message {
     grid-area: Message;
     font-size: 12px;
@@ -37,12 +39,14 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
+
 .chat__time {
     grid-area: Time;
     justify-self: end;
     align-self: start;
     font-size: 9px;
 }
+
 .chat__new {
     grid-area: New;
     justify-self: end;

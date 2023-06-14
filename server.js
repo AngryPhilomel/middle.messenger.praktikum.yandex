@@ -1,16 +1,11 @@
-import express from 'express'
-import path from "path";
-import {fileURLToPath} from 'url';
+import express from "express";
 
 const app = express();
 const PORT = 3000;
 
-const __filename = fileURLToPath(import.meta.url);
+app.use(express.static("./dist"));
 
-const __dirname = path.dirname(__filename);
-
-app.use(express.static(path.join(__dirname, '/dist')));
-
-app.listen(PORT, function () {
-    console.log(`Example app listening on port ${PORT}!`);
+app.listen(PORT, () => {
+  // eslint-disable-next-line no-console
+  console.log(`Example app listening on port ${PORT}!`);
 });

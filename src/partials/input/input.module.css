@@ -52,6 +52,7 @@
     background-color: transparent;
     color: var(--accent-color);
 }
+
 .input__input[type="file"]:hover::file-selector-button,
 .input__input[type="file"]:focus::file-selector-button {
     text-decoration: underline;

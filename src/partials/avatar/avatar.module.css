@@ -14,7 +14,7 @@
     border-radius: 50%;
     width: 130px;
     height: 130px;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgb(0 0 0 / 70%);
     opacity: 0;
     transition: opacity 200ms ease-in-out;
 }

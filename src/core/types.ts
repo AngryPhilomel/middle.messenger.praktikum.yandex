@@ -10,6 +10,6 @@ export enum BLOCK_EVENTS {
 }
 export type Props = Record<string, unknown>;
 export type BlockMeta = {
-    tagName: string;
+    // tagName: string;
     props: Props;
 };

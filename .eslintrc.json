@@ -8,6 +8,10 @@
     "no-shadow": "off",
     "dot-notation": "off",
     "no-param-reassign": "off",
+    "no-underscore-dangle": "off",
+    "no-use-before-define": "off",
+    "import/extensions": "off",
+    "import/no-unresolved": "off",
     "prettier/prettier": ["error", { "tabWidth": 4 }]
   },
   "env": {

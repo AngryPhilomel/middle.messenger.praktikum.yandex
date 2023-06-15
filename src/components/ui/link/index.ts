@@ -1,13 +1,13 @@
 import Handlebars from "handlebars";
 import Block from "../../../core/block.ts";
-import tmpl from "./button.tmpl.ts";
+import tmpl from "./link.tmpl.ts";
 
-interface ButtonProps extends Record<string, unknown> {
-    type?: string;
-    text?: string;
+interface LinkProps extends Record<string, unknown> {
+    text: string;
+    href: string;
 }
-export default class Button extends Block<ButtonProps> {
-    constructor(public props: ButtonProps) {
+export default class Link extends Block<LinkProps> {
+    constructor(public props: LinkProps) {
         super(props);
     }
 

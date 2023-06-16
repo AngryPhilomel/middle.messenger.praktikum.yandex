@@ -7,6 +7,7 @@ interface InputProps extends Record<string, unknown> {
     name: string;
     type: string;
     error?: string;
+    disabled?: boolean;
 }
 export default class Input extends Block<InputProps> {
     constructor(public props: InputProps) {

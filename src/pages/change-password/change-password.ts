@@ -1,21 +1,61 @@
 import Handlebars from "handlebars";
-import changePassword from "./change-password.tmpl.ts";
+import tmpl from "./change-password.tmpl.ts";
+import Block from "../../core/block.ts";
+import CenteredLayout from "../../components/centered-layout";
+import Input from "../../components/ui/input";
+import ProfileLayout from "../../layout/profile";
+import Link from "../../components/ui/link";
+import Button from "../../components/ui/button";
+
+interface ChangePasswordProps extends Record<string, unknown> {
+    root: Block;
+}
+class ChangePassword extends Block<ChangePasswordProps> {
+    constructor(public props: ChangePasswordProps) {
+        super(props);
+    }
+
+    render() {
+        const template = Handlebars.compile(tmpl());
+        return this.compile(template, this.props);
+    }
+}
+
+const inputs = [
+    {
+        name: "oldPassword",
+        label: "Old password",
+        type: "password",
+    },
+    {
+        name: "newPassword",
+        label: "New password",
+        type: "password",
+    },
+    {
+        name: "newPasswordRepeat",
+        label: "New password repeat",
+        type: "password",
+    },
+];
+
+const page = new ChangePassword({
+    root: new CenteredLayout({
+        child: new ProfileLayout({
+            backButton: new Link({
+                text: "❮ Back",
+                href: "../profile/profile.html",
+            }),
+            inputs: inputs.map((input) => new Input({ ...input })),
+            buttons: new Button({
+                text: "Save",
+                type: "submit",
+            }),
+        }),
+    }),
+});
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.querySelector("#app");
-    const template = Handlebars.compile(changePassword);
-
-    root!.innerHTML = template({
-        backHref: "../profile/profile.html",
-        user: {
-            id: 123,
-            first_name: "Petya",
-            second_name: "Pupkin",
-            display_name: "Petya Pupkin",
-            login: "userLogin",
-            email: "my@email.com",
-            phone: "89223332211",
-            avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-        },
-    });
+    root!.innerHTML = page.getContent().outerHTML;
 });

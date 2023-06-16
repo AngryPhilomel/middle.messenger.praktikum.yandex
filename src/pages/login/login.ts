@@ -7,8 +7,11 @@ import FormLayout from "../../layout/form";
 import Input from "../../components/ui/input";
 import Link from "../../components/ui/link";
 
-class Login extends Block {
-    constructor(public props: Record<string, unknown>) {
+interface LoginProps extends Record<string, unknown> {
+    root: Block;
+}
+class Login extends Block<LoginProps> {
+    constructor(public props: LoginProps) {
         super(props);
     }
 

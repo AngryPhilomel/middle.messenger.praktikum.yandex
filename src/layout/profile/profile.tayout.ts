@@ -1,21 +1,20 @@
 import styles from "./profile.module.css";
-export default `
-    {{#> centeredFullscreen}}
-        {{#*inline "content"}}
+
+export const tmpl = () => `
             <main class="${styles["profile-layout"]}">
                 <div class="${styles["profile-layout__back"]}">
-                    {{> link text='❮ Back' href=backHref}}
+                    {{{backButton}}}
                 </div>
                 <div class="${styles["profile-layout__avatar"]}">
-                    {{> avatar}}
+                    {{{avatar}}}
                 </div>
                 <form>
-                    {{> inputs}}
+                    {{{inputs}}}
                     <div class="${styles["profile-layout__buttons"]}">
-                        {{> buttons}}
+                        {{{buttons}}}
                     </div>
                 </form>
             </main>
-        {{/inline}}
-    {{/centeredFullscreen}}
 `;
+
+export default tmpl;

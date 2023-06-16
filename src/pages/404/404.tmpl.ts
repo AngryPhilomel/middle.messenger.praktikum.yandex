@@ -1,11 +1,4 @@
-//language=hbs
-export default `
-    {{#> errorLayout}}
-        {{#*inline "errorCode"}}
-            404
-        {{/inline}}
-        {{#*inline "errorText"}}
-            Not found
-        {{/inline}}
-    {{/errorLayout}}
-`;
+// language=hbs
+
+const tmpl = () => `{{{root}}}`;
+export default tmpl;

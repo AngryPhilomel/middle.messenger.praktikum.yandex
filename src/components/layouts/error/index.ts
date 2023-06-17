@@ -1,5 +1,5 @@
 import Handlebars from "handlebars";
-import Block from "../../core/block.ts";
+import Block from "../../../core/block.ts";
 import tmpl from "./error.layout.ts";
 
 interface ErrorLayoutProps extends Record<string, unknown> {

@@ -6,9 +6,9 @@ interface AvatarProps extends Record<string, unknown> {
     small?: boolean;
     medium?: boolean;
     changeable?: boolean;
+    changeLink?: Block;
     id?: string;
     src?: string;
-    href?: string;
 }
 export default class Avatar extends Block<AvatarProps> {
     constructor(public props: AvatarProps) {

@@ -1,5 +1,5 @@
 import Handlebars from "handlebars";
-import Block from "../../core/block.ts";
+import Block from "../../../core/block.ts";
 import formLayout from "./form.layout.ts";
 
 interface FormProps extends Record<string, unknown> {

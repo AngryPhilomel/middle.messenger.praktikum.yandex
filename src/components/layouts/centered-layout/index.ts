@@ -1,5 +1,5 @@
 import Handlebars from "handlebars";
-import Block from "../../core/block.ts";
+import Block from "../../../core/block.ts";
 import layoutTmpl from "./centered-layout.tmpl.ts";
 
 interface CenteredLayoutProps extends Record<string, unknown> {

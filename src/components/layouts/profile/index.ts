@@ -1,5 +1,5 @@
 import Handlebars from "handlebars";
-import Block from "../../core/block.ts";
+import Block from "../../../core/block.ts";
 import tmpl from "./profile.tayout.ts";
 
 interface ProfileLayoutProps extends Record<string, unknown> {

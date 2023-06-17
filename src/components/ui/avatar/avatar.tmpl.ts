@@ -22,7 +22,7 @@ const tmpl = () => `
             ></image>
             {{#if changeable}}
                     <div class="${styles["avatar__menu"]}">
-                            {{> link text='change avatar' href=href}}
+                            {{{changeLink}}}
                     </div>
             {{/if}}
     </div>

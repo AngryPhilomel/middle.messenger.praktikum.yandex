@@ -1,9 +1,9 @@
 import Handlebars from "handlebars";
 import tmpl from "./profile.tmpl.ts";
 import Block from "../../core/block.ts";
-import CenteredLayout from "../../components/centered-layout";
+import CenteredLayout from "../../components/layouts/centered-layout";
 import Input from "../../components/ui/input";
-import ProfileLayout from "../../layout/profile";
+import ProfileLayout from "../../components/layouts/profile";
 import Link from "../../components/ui/link";
 import Avatar from "../../components/ui/avatar";
 
@@ -87,7 +87,10 @@ const page = new Profile({
             avatar: new Avatar({
                 src: user.avatar,
                 changeable: true,
-                href: "../change-avatar/change-avatar.html",
+                changeLink: new Link({
+                    text: "change avatar",
+                    href: "../change-avatar/change-avatar.html",
+                }),
             }),
             inputs: inputs.map((input) => new Input({ ...input })),
             buttons: [

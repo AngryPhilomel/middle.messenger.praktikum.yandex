@@ -1,9 +1,11 @@
-export const toLocalTime = (time: Date) => {
+const toLocalTime = (time: string) => {
     const date = new Date(time);
     return isToday(date)
         ? todayFormatter.format(date)
         : pastFormatter.format(date);
 };
+
+export default toLocalTime;
 
 const todayFormatter = new Intl.DateTimeFormat("en-US", {
     timeStyle: "short",

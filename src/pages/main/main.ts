@@ -1,5 +1,25 @@
 import Handlebars from "handlebars";
-import main from "./main.tmpl.ts";
+import Block from "../../core/block.ts";
+import tmpl from "./main.tmpl.ts";
+import TwoSideLayout from "../../components/layouts/two-side";
+import Link from "../../components/ui/link";
+import Input from "../../components/ui/input";
+import Chat from "../../components/chat";
+import Avatar from "../../components/ui/avatar";
+
+interface MessengerProps extends Record<string, unknown> {
+    root: Block;
+}
+class Messenger extends Block<MessengerProps> {
+    constructor(public props: MessengerProps) {
+        super(props);
+    }
+
+    render() {
+        const template = Handlebars.compile(tmpl());
+        return this.compile(template, this.props);
+    }
+}
 
 const chats = [
     {
@@ -76,39 +96,66 @@ const chats = [
             content: "this is message content",
         },
     },
-]
+];
+
+const page = new Messenger({
+    root: new TwoSideLayout({
+        toProfile: new Link({
+            text: "Profile ❯",
+            href: "../../pages/profile/profile.html",
+        }),
+        search: new Input({
+            placeholder: "Search",
+        }),
+        side: chats.map(
+            (chat) =>
+                new Chat({
+                    chat,
+                    avatar: new Avatar({
+                        src: chat.avatar,
+                        medium: true,
+                    }),
+                })
+        ),
+        main: new Input({
+            placeholder: "Search",
+        }),
+    }),
+});
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.querySelector("#app");
-    const template = Handlebars.compile(main);
-
-    root!.innerHTML = template({
-        selectedChat: chats[1],
-        chats: chats,
-    });
-
-    const attach = document.querySelector('#message-attach')
-    const menu = document.querySelector('#chat-menu')
-    if(attach) {
-        attach.addEventListener('click', attachHandler)
-    }
-    if(menu) {
-        menu.addEventListener('click', menuHandler)
-    }
-
-    function attachHandler(e: Event) {
-        e.preventDefault()
-        const attachMenu = document.querySelector('#attach-menu')
-        if (!attachMenu) {
-            return false;
-        }
-        const visible = attachMenu.getAttribute('data-visible');
-        visible === 'true' ?
-            attachMenu.setAttribute('data-visible', 'false') :
-            attachMenu.setAttribute('data-visible', 'true')
-    }
-    function menuHandler(e: Event) {
-        e.preventDefault()
-        alert('123')
-    }
+    root!.innerHTML = page.getContent().outerHTML;
 });
+
+// document.addEventListener("DOMContentLoaded", () => {
+// root!.innerHTML = template({
+//     selectedChat: chats[1],
+//     chats,
+// });
+
+// const attach = document.querySelector('#message-attach')
+// const menu = document.querySelector('#chat-menu')
+// if(attach) {
+//     attach.addEventListener('click', attachHandler)
+// }
+// if(menu) {
+//     menu.addEventListener('click', menuHandler)
+// }
+
+// function attachHandler(e: Event) {
+//     e.preventDefault()
+//     const attachMenu = document.querySelector('#attach-menu')
+//     if (!attachMenu) {
+//         return false;
+//     }
+//     const visible = attachMenu.getAttribute('data-visible');
+//     visible === 'true' ?
+//         attachMenu.setAttribute('data-visible', 'false') :
+//         attachMenu.setAttribute('data-visible', 'true')
+// }
+// function menuHandler(e: Event) {
+//     e.preventDefault()
+//     alert('123')
+// }
+// });

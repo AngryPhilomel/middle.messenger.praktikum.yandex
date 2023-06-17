@@ -1,19 +1,21 @@
 import styles from "./two-side.module.css";
 
-//language=hbs
-export default `
+// language=hbs
+const tmpl = () => `
     <div class="${styles["two-side"]}">
         <aside class="${styles["two-side__aside"]}">
             <div class="${styles["two-side__aside__header"]}">
-                {{> link text='Profile ❯' href='../../pages/profile/profile.html'}}
-                {{> input placeholder='Search'}}
+                {{{toProfile}}}
+                {{{search}}}
             </div>
             <ul class="${styles["two-side__aside__chats"]}">
-                {{> side}}
+                {{{side}}}
             </ul>
         </aside>
         <main class="${styles["two-side__main"]}">
-            {{> main}}
+            {{{main}}}
         </main>
     </div>
 `;
+
+export default tmpl;

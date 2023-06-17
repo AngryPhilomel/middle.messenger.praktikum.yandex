@@ -1,9 +1,9 @@
 import Handlebars from "handlebars";
 import tmpl from "./login.tmpl.ts";
 import Button from "../../components/ui/button";
-import CenteredLayout from "../../components/centered-layout";
+import CenteredLayout from "../../components/layouts/centered-layout";
 import Block from "../../core/block.ts";
-import FormLayout from "../../layout/form";
+import FormLayout from "../../components/layouts/form";
 import Input from "../../components/ui/input";
 import Link from "../../components/ui/link";
 

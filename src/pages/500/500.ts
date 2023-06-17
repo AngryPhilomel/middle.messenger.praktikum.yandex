@@ -1,9 +1,9 @@
 import Handlebars from "handlebars";
 import Block from "../../core/block.ts";
 import tmpl from "../change-password/change-password.tmpl.ts";
-import CenteredLayout from "../../components/centered-layout";
+import CenteredLayout from "../../components/layouts/centered-layout";
 import Link from "../../components/ui/link";
-import ErrorLayout from "../../layout/error";
+import ErrorLayout from "../../components/layouts/error";
 
 interface Error500Props extends Record<string, unknown> {
     root: Block;

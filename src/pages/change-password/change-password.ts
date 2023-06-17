@@ -1,9 +1,9 @@
 import Handlebars from "handlebars";
 import tmpl from "./change-password.tmpl.ts";
 import Block from "../../core/block.ts";
-import CenteredLayout from "../../components/centered-layout";
+import CenteredLayout from "../../components/layouts/centered-layout";
 import Input from "../../components/ui/input";
-import ProfileLayout from "../../layout/profile";
+import ProfileLayout from "../../components/layouts/profile";
 import Link from "../../components/ui/link";
 import Button from "../../components/ui/button";
 

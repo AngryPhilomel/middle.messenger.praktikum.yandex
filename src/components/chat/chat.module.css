@@ -14,6 +14,10 @@
     overflow: hidden;
 }
 
+.chat__selected {
+    background-color: var(--chat-active);
+}
+
 .chat:hover {
     background-color: var(--chat-focus);
 }

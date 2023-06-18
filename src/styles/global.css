@@ -11,7 +11,8 @@
     --controls-background: rgb(98 108 119 / 25%);
     --controls-hover: #fff;
     --controls-focus: #45b6fc;
-    --chat-focus: rgb(51 105 243 / 30%);
+    --chat-focus: rgb(51 105 243 / 50%);
+    --chat-active: rgb(51 105 243 / 30%);
     --error-color: #ffa080;
     --chat-header-height: 120px;
 }

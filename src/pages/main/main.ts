@@ -2,8 +2,6 @@ import Handlebars from "handlebars";
 import Block from "../../core/block.ts";
 import tmpl from "./main.tmpl.ts";
 import TwoSideLayout from "../../components/layouts/two-side";
-import Input from "../../components/ui/input";
-import Chat from "../../components/chat";
 
 interface MessengerProps extends Record<string, unknown> {
     root: Block;
@@ -21,7 +19,7 @@ class Messenger extends Block<MessengerProps> {
 
 const chats = [
     {
-        id: 123,
+        id: 1,
         title: "my-chat",
         avatar: "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
         unread_count: 0,
@@ -40,7 +38,7 @@ const chats = [
         },
     },
     {
-        id: 123,
+        id: 2,
         title: "my-chat",
         avatar: "https://images.unsplash.com/photo-1485875437342-9b39470b3d95?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80",
         unread_count: 15,
@@ -58,7 +56,7 @@ const chats = [
         },
     },
     {
-        id: 123,
+        id: 3,
         title: "my-chat",
         avatar: "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
         unread_count: 15,
@@ -77,7 +75,7 @@ const chats = [
         },
     },
     {
-        id: 123,
+        id: 4,
         title: "my-chat",
         avatar: "https://images.unsplash.com/photo-1485875437342-9b39470b3d95?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80",
         unread_count: 15,
@@ -98,15 +96,8 @@ const chats = [
 
 const page = new Messenger({
     root: new TwoSideLayout({
-        side: chats.map(
-            (chat) =>
-                new Chat({
-                    chat,
-                })
-        ),
-        main: new Input({
-            placeholder: "Search",
-        }),
+        // selectedChat: 1,
+        chats,
     }),
 });
 

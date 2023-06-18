@@ -107,10 +107,9 @@ export default abstract class Block<T extends Record<string, unknown> = any> {
 
         Object.entries(this.children).forEach(([name, component]) => {
             if (Array.isArray(component)) {
-                contextAndStubs[name] = component.map(
-                    (c) => `<div data-id=${c.id}></div>`
-                );
-                // .join("");
+                contextAndStubs[name] = component
+                    .map((c) => `<div data-id=${c.id}></div>`)
+                    .join("");
             } else {
                 contextAndStubs[name] = `<div data-id=${component.id}></div>`;
             }

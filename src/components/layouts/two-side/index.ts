@@ -3,15 +3,28 @@ import Block from "../../../core/block.ts";
 import tmpl from "./two-side.layout.ts";
 import Link from "../../ui/link";
 import Input from "../../ui/input";
+import { ChatItem } from "../../../core/types.ts";
+import Chat from "../../chat";
+import SelectedChat from "../../selected-chat";
+import NotSelectedChat from "../../not-selected-chat";
 
 interface TwoSideLayoutProps extends Record<string, unknown> {
-    side: Block | Block[];
-    main: Block;
+    // selectedChat: number | null;
+    chats: ChatItem[];
+    // side: Block | Block[];
+    // messenger: Block;
+    // empty: Block;
 }
 
 export default class TwoSideLayout extends Block<TwoSideLayoutProps> {
     constructor(props: TwoSideLayoutProps) {
-        super(props);
+        super({ ...props, selectedChat: 0 });
+    }
+
+    public updateSelectedChat(id: number) {
+        this.setProps({
+            selectedChat: id,
+        });
     }
 
     init() {
@@ -19,19 +32,26 @@ export default class TwoSideLayout extends Block<TwoSideLayoutProps> {
             text: "Profile ❯",
             href: "../../pages/profile/profile.html",
         });
-
-        const search = new Input({
+        this.children.search = new Input({
             placeholder: "Search",
-            events: {
-                click: () => console.log("CHANGE"),
-            },
         });
-        setInterval(() => {
-            search.setProps({
-                placeholder: +new Date(),
-            });
-        }, 1000);
-        this.children.search = search;
+        this.children.side = this.props.chats.map(
+            (chat) =>
+                new Chat({
+                    chat,
+                    isSelected: chat.id === this.props.selectedChat,
+                    events: {
+                        click: () => {
+                            this.updateSelectedChat(chat.id);
+                            console.log(chat.id, this.props.selectedChat);
+                        },
+                    },
+                })
+        );
+        this.children.messenger = new SelectedChat({
+            chat: this.props.chats[this.props.selectedChat!],
+        });
+        this.children.empty = new NotSelectedChat({});
     }
 
     render() {

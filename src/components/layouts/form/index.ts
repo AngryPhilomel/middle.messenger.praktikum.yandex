@@ -8,7 +8,7 @@ interface FormProps extends Record<string, unknown> {
     buttons: Block | Block[];
 }
 export default class FormLayout extends Block<FormProps> {
-    constructor(public props: FormProps) {
+    constructor(props: FormProps) {
         super(props);
     }
 

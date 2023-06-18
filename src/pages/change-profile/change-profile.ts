@@ -11,7 +11,7 @@ interface ChangeProfileProps extends Record<string, unknown> {
     root: Block;
 }
 class ChangeProfile extends Block<ChangeProfileProps> {
-    constructor(public props: ChangeProfileProps) {
+    constructor(props: ChangeProfileProps) {
         super(props);
     }
 
@@ -89,5 +89,5 @@ const page = new ChangeProfile({
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.querySelector("#app");
-    root!.innerHTML = page.getContent().outerHTML;
+    root!.append(page.getContent());
 });

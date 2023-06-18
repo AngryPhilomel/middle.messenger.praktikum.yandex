@@ -86,6 +86,7 @@ export default abstract class Block<T extends Record<string, unknown> = any> {
     }
 
     private _render() {
+        console.log(this.element?.firstElementChild?.firstElementChild);
         const block = this.render();
         const newElement = block.firstElementChild as HTMLElement;
         if (this.element && newElement) {
@@ -151,6 +152,7 @@ export default abstract class Block<T extends Record<string, unknown> = any> {
         }
 
         Object.keys(events).forEach((eventName) => {
+            console.log(eventName);
             this.element?.addEventListener(eventName, events[eventName]);
         });
     }

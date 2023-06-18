@@ -9,7 +9,7 @@ interface ProfileLayoutProps extends Record<string, unknown> {
     buttons: Block | Block[];
 }
 export default class ProfileLayout extends Block<ProfileLayoutProps> {
-    constructor(public props: ProfileLayoutProps) {
+    constructor(props: ProfileLayoutProps) {
         super(props);
     }
 

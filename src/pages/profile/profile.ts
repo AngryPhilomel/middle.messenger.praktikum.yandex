@@ -11,7 +11,7 @@ interface ProfileProps extends Record<string, unknown> {
     root: Block;
 }
 class Profile extends Block<ProfileProps> {
-    constructor(public props: ProfileProps) {
+    constructor(props: ProfileProps) {
         super(props);
     }
 
@@ -114,5 +114,5 @@ const page = new Profile({
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.querySelector("#app");
-    root!.innerHTML = page.getContent().outerHTML;
+    root!.append(page.getContent());
 });

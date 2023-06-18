@@ -8,7 +8,7 @@ import Button from "../../components/ui/button";
 import Link from "../../components/ui/link";
 
 class Register extends Block {
-    constructor(public props: Record<string, unknown>) {
+    constructor(props: Record<string, unknown>) {
         super(props);
     }
 
@@ -63,5 +63,5 @@ const page = new Register({
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.querySelector("#app");
-    root!.innerHTML = page.getContent().outerHTML;
+    root!.append(page.getContent());
 });

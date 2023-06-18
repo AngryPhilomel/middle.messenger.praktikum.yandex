@@ -8,7 +8,7 @@ interface ErrorLayoutProps extends Record<string, unknown> {
     errorText: string;
 }
 export default class ErrorLayout extends Block<ErrorLayoutProps> {
-    constructor(public props: ErrorLayoutProps) {
+    constructor(props: ErrorLayoutProps) {
         super(props);
     }
 

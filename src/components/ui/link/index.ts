@@ -8,7 +8,7 @@ interface LinkProps extends Record<string, unknown> {
     negative?: boolean;
 }
 export default class Link extends Block<LinkProps> {
-    constructor(public props: LinkProps) {
+    constructor(props: LinkProps) {
         super(props);
     }
 

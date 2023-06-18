@@ -2,16 +2,14 @@ import Handlebars from "handlebars";
 import Block from "../../core/block.ts";
 import tmpl from "./main.tmpl.ts";
 import TwoSideLayout from "../../components/layouts/two-side";
-import Link from "../../components/ui/link";
 import Input from "../../components/ui/input";
 import Chat from "../../components/chat";
-import Avatar from "../../components/ui/avatar";
 
 interface MessengerProps extends Record<string, unknown> {
     root: Block;
 }
 class Messenger extends Block<MessengerProps> {
-    constructor(public props: MessengerProps) {
+    constructor(props: MessengerProps) {
         super(props);
     }
 
@@ -100,21 +98,10 @@ const chats = [
 
 const page = new Messenger({
     root: new TwoSideLayout({
-        toProfile: new Link({
-            text: "Profile ❯",
-            href: "../../pages/profile/profile.html",
-        }),
-        search: new Input({
-            placeholder: "Search",
-        }),
         side: chats.map(
             (chat) =>
                 new Chat({
                     chat,
-                    avatar: new Avatar({
-                        src: chat.avatar,
-                        medium: true,
-                    }),
                 })
         ),
         main: new Input({
@@ -125,7 +112,7 @@ const page = new Messenger({
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.querySelector("#app");
-    root!.innerHTML = page.getContent().outerHTML;
+    root!.append(page.getContent());
 });
 
 // document.addEventListener("DOMContentLoaded", () => {

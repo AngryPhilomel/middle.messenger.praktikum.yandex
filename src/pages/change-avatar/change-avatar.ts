@@ -12,7 +12,7 @@ interface ChangeAvatarProps extends Record<string, unknown> {
     root: Block;
 }
 class ChangeAvatar extends Block<ChangeAvatarProps> {
-    constructor(public props: ChangeAvatarProps) {
+    constructor(props: ChangeAvatarProps) {
         super(props);
     }
 
@@ -60,7 +60,7 @@ const page = new ChangeAvatar({
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.querySelector("#app");
-    root!.innerHTML = page.getContent().outerHTML;
+    root!.append(page.getContent());
 
     const avatar: HTMLImageElement | null = document.querySelector("#avatar");
     const avatarUpload: HTMLInputElement | null =

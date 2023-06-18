@@ -11,7 +11,7 @@ interface LoginProps extends Record<string, unknown> {
     root: Block;
 }
 class Login extends Block<LoginProps> {
-    constructor(public props: LoginProps) {
+    constructor(props: LoginProps) {
         super(props);
     }
 
@@ -53,5 +53,5 @@ const page = new Login({
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.querySelector("#app");
-    root!.innerHTML = page.getContent().outerHTML;
+    root!.append(page.getContent());
 });

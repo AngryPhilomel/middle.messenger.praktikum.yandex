@@ -12,6 +12,7 @@
     "no-use-before-define": "off",
     "import/extensions": "off",
     "import/no-unresolved": "off",
+    "no-useless-constructor": "off",
     "prettier/prettier": ["error", { "tabWidth": 4 }]
   },
   "env": {

@@ -9,7 +9,7 @@ interface Error404Props extends Record<string, unknown> {
     root: Block;
 }
 class Error404 extends Block<Error404Props> {
-    constructor(public props: Error404Props) {
+    constructor(props: Error404Props) {
         super(props);
     }
 
@@ -34,5 +34,5 @@ const page = new Error404({
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.querySelector("#app");
-    root!.innerHTML = page.getContent().outerHTML;
+    root!.append(page.getContent());
 });

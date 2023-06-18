@@ -6,7 +6,7 @@ interface CenteredLayoutProps extends Record<string, unknown> {
     child: Block;
 }
 export default class CenteredLayout extends Block<CenteredLayoutProps> {
-    constructor(public props: CenteredLayoutProps) {
+    constructor(props: CenteredLayoutProps) {
         super(props);
     }
 

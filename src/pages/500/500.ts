@@ -9,7 +9,7 @@ interface Error500Props extends Record<string, unknown> {
     root: Block;
 }
 class Error500 extends Block<Error500Props> {
-    constructor(public props: Error500Props) {
+    constructor(props: Error500Props) {
         super(props);
     }
 
@@ -34,5 +34,5 @@ const page = new Error500({
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.querySelector("#app");
-    root!.innerHTML = page.getContent().outerHTML;
+    root!.append(page.getContent());
 });

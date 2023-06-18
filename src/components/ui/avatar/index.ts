@@ -11,7 +11,7 @@ interface AvatarProps extends Record<string, unknown> {
     src?: string;
 }
 export default class Avatar extends Block<AvatarProps> {
-    constructor(public props: AvatarProps) {
+    constructor(props: AvatarProps) {
         super(props);
     }
 

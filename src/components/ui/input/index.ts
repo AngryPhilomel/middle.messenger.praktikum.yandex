@@ -11,7 +11,7 @@ interface InputProps extends Record<string, unknown> {
     placeholder?: string;
 }
 export default class Input extends Block<InputProps> {
-    constructor(public props: InputProps) {
+    constructor(props: InputProps) {
         super(props);
     }
 

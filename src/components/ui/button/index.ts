@@ -7,7 +7,7 @@ interface ButtonProps extends Record<string, unknown> {
     text?: string;
 }
 export default class Button extends Block<ButtonProps> {
-    constructor(public props: ButtonProps) {
+    constructor(props: ButtonProps) {
         super(props);
     }
 

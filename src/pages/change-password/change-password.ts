@@ -11,7 +11,7 @@ interface ChangePasswordProps extends Record<string, unknown> {
     root: Block;
 }
 class ChangePassword extends Block<ChangePasswordProps> {
-    constructor(public props: ChangePasswordProps) {
+    constructor(props: ChangePasswordProps) {
         super(props);
     }
 
@@ -57,5 +57,5 @@ const page = new ChangePassword({
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.querySelector("#app");
-    root!.innerHTML = page.getContent().outerHTML;
+    root!.append(page.getContent());
 });

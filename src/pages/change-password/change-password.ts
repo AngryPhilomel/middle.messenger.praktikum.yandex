@@ -6,6 +6,7 @@ import Input from "../../components/ui/input";
 import ProfileLayout from "../../components/layouts/profile";
 import Link from "../../components/ui/link";
 import Button from "../../components/ui/button";
+import FormLayout from "../../components/layouts/form";
 
 interface ChangePasswordProps extends Record<string, unknown> {
     root: Block;
@@ -26,16 +27,19 @@ const inputs = [
         name: "oldPassword",
         label: "Old password",
         type: "password",
+        rules: [Input.VALIDATE_RULES.REQUIRED, Input.VALIDATE_RULES.PASSWORD],
     },
     {
         name: "newPassword",
         label: "New password",
         type: "password",
+        rules: [Input.VALIDATE_RULES.REQUIRED, Input.VALIDATE_RULES.PASSWORD],
     },
     {
         name: "newPasswordRepeat",
         label: "New password repeat",
         type: "password",
+        rules: [Input.VALIDATE_RULES.REQUIRED, Input.VALIDATE_RULES.PASSWORD],
     },
 ];
 
@@ -46,10 +50,14 @@ const page = new ChangePassword({
                 text: "❮ Back",
                 href: "../profile/profile.html",
             }),
-            inputs: inputs.map((input) => new Input({ ...input })),
-            buttons: new Button({
-                text: "Save",
-                type: "submit",
+            form: new FormLayout({
+                inputs: inputs.map(
+                    (input) => new Input({ ...input }, input.rules)
+                ),
+                buttons: new Button({
+                    text: "Save",
+                    type: "submit",
+                }),
             }),
         }),
     }),

@@ -8,13 +8,15 @@ export const tmpl = () => `
                 <div class="${styles["profile-layout__avatar"]}">
                     {{{avatar}}}
                 </div>
-                <form>
-                    {{{inputs}}}
-                    <div class="${styles["profile-layout__buttons"]}">
-                        {{{buttons}}}
-                    </div>
-                </form>
+                {{{form}}}
             </main>
 `;
+
+// <form>
+//     {{{inputs}}}
+// <div class="${styles["profile-layout__buttons"]}">
+// {{{buttons}}}
+// </div>
+// </form>
 
 export default tmpl;

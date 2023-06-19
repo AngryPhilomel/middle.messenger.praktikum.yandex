@@ -5,8 +5,7 @@ import tmpl from "./profile.tayout.ts";
 interface ProfileLayoutProps extends Record<string, unknown> {
     backButton: Block;
     avatar?: Block;
-    inputs: Block | Block[];
-    buttons: Block | Block[];
+    form: Block;
 }
 export default class ProfileLayout extends Block<ProfileLayoutProps> {
     constructor(props: ProfileLayoutProps) {

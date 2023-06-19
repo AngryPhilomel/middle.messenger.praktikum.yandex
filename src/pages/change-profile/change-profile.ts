@@ -6,6 +6,7 @@ import Input from "../../components/ui/input";
 import ProfileLayout from "../../components/layouts/profile";
 import Link from "../../components/ui/link";
 import Button from "../../components/ui/button";
+import FormLayout from "../../components/layouts/form";
 
 interface ChangeProfileProps extends Record<string, unknown> {
     root: Block;
@@ -38,36 +39,42 @@ const inputs = [
         value: user.email,
         label: "Email",
         type: "email",
+        rules: [Input.VALIDATE_RULES.REQUIRED, Input.VALIDATE_RULES.EMAIL],
     },
     {
         name: "login",
         value: user.login,
         label: "Login",
         type: "text",
+        rules: [Input.VALIDATE_RULES.REQUIRED, Input.VALIDATE_RULES.LOGIN],
     },
     {
         name: "first_name",
         value: user.first_name,
         label: "First name",
         type: "text",
+        rules: [Input.VALIDATE_RULES.REQUIRED, Input.VALIDATE_RULES.NAME],
     },
     {
         name: "second_name",
         value: user.second_name,
         label: "Second name",
         type: "text",
+        rules: [Input.VALIDATE_RULES.REQUIRED, Input.VALIDATE_RULES.NAME],
     },
     {
         name: "display_name",
         value: user.display_name,
         label: "Display name",
         type: "text",
+        rules: [Input.VALIDATE_RULES.REQUIRED],
     },
     {
         name: "phone",
         value: user.phone,
         label: "Phone",
         type: "number",
+        rules: [Input.VALIDATE_RULES.REQUIRED, Input.VALIDATE_RULES.PHONE],
     },
 ];
 
@@ -78,10 +85,14 @@ const page = new ChangeProfile({
                 text: "❮ Back",
                 href: "../profile/profile.html",
             }),
-            inputs: inputs.map((input) => new Input({ ...input })),
-            buttons: new Button({
-                text: "Save",
-                type: "submit",
+            form: new FormLayout({
+                inputs: inputs.map(
+                    (input) => new Input({ ...input }, input.rules)
+                ),
+                buttons: new Button({
+                    text: "Save",
+                    type: "submit",
+                }),
             }),
         }),
     }),

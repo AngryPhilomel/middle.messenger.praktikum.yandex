@@ -7,6 +7,7 @@ import Link from "../../components/ui/link";
 import Input from "../../components/ui/input";
 import Button from "../../components/ui/button";
 import Avatar from "../../components/ui/avatar";
+import FormLayout from "../../components/layouts/form";
 
 interface ChangeAvatarProps extends Record<string, unknown> {
     root: Block;
@@ -43,16 +44,20 @@ const page = new ChangeAvatar({
                 src: user.avatar,
                 id: "avatar",
             }),
-            inputs: new Input({
-                id: "avatarUpload",
-                name: "avatar",
-                label: "Avatar",
-                type: "file",
-                accept: "image/*",
-            }),
-            buttons: new Button({
-                text: "Save",
-                type: "submit",
+            form: new FormLayout({
+                inputs: [
+                    new Input({
+                        id: "avatarUpload",
+                        name: "avatar",
+                        label: "Avatar",
+                        type: "file",
+                        accept: "image/*",
+                    }),
+                ],
+                buttons: new Button({
+                    text: "Save",
+                    type: "submit",
+                }),
             }),
         }),
     }),

@@ -6,6 +6,7 @@ import Input from "../../components/ui/input";
 import ProfileLayout from "../../components/layouts/profile";
 import Link from "../../components/ui/link";
 import Avatar from "../../components/ui/avatar";
+import FormLayout from "../../components/layouts/form";
 
 interface ProfileProps extends Record<string, unknown> {
     root: Block;
@@ -92,22 +93,24 @@ const page = new Profile({
                     href: "../change-avatar/change-avatar.html",
                 }),
             }),
-            inputs: inputs.map((input) => new Input({ ...input })),
-            buttons: [
-                new Link({
-                    text: "Change profile data",
-                    href: "../change-profile/change-profile.html",
-                }),
-                new Link({
-                    text: "Change password",
-                    href: "../change-password/change-password.html",
-                }),
-                new Link({
-                    text: "Logout",
-                    href: "./logout",
-                    negative: true,
-                }),
-            ],
+            form: new FormLayout({
+                inputs: inputs.map((input) => new Input({ ...input })),
+                buttons: [
+                    new Link({
+                        text: "Change profile data",
+                        href: "../change-profile/change-profile.html",
+                    }),
+                    new Link({
+                        text: "Change password",
+                        href: "../change-password/change-password.html",
+                    }),
+                    new Link({
+                        text: "Logout",
+                        href: "./logout",
+                        negative: true,
+                    }),
+                ],
+            }),
         }),
     }),
 });

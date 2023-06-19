@@ -7,7 +7,6 @@
 .form__form {
     display: flex;
     flex-direction: column;
-    min-height: 460px;
 }
 
 .form__inputs {

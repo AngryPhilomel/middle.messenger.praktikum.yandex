@@ -23,29 +23,69 @@ const page = new Register({
         child: new FormLayout({
             heading: "Sign up",
             inputs: [
-                new Input({
-                    label: "First Name",
-                    name: "first_name",
-                    type: "text",
-                }),
-                new Input({
-                    label: "Second Name",
-                    name: "second_name",
-                    type: "text",
-                }),
-                new Input({ label: "Login", name: "login", type: "text" }),
-                new Input({ label: "Email", name: "email", type: "email" }),
-                new Input({
-                    label: "Password",
-                    name: "password",
-                    type: "password",
-                }),
-                new Input({
-                    label: "Password again",
-                    name: "password_again",
-                    type: "password",
-                }),
-                new Input({ label: "Phone", name: "phone", type: "text" }),
+                new Input(
+                    {
+                        label: "First Name",
+                        name: "first_name",
+                        type: "text",
+                    },
+                    [Input.VALIDATE_RULES.REQUIRED, Input.VALIDATE_RULES.NAME]
+                ),
+                new Input(
+                    {
+                        label: "Second Name",
+                        name: "second_name",
+                        type: "text",
+                    },
+                    [Input.VALIDATE_RULES.REQUIRED, Input.VALIDATE_RULES.NAME]
+                ),
+
+                new Input(
+                    {
+                        label: "Login",
+                        name: "login",
+                        type: "text",
+                    },
+                    [Input.VALIDATE_RULES.REQUIRED, Input.VALIDATE_RULES.LOGIN]
+                ),
+                new Input(
+                    {
+                        label: "Email",
+                        name: "email",
+                        type: "email",
+                    },
+                    [Input.VALIDATE_RULES.REQUIRED, Input.VALIDATE_RULES.EMAIL]
+                ),
+                new Input(
+                    {
+                        label: "Password",
+                        name: "password",
+                        type: "password",
+                    },
+                    [
+                        Input.VALIDATE_RULES.REQUIRED,
+                        Input.VALIDATE_RULES.PASSWORD,
+                    ]
+                ),
+                new Input(
+                    {
+                        label: "Password again",
+                        name: "password_again",
+                        type: "password",
+                    },
+                    [
+                        Input.VALIDATE_RULES.REQUIRED,
+                        Input.VALIDATE_RULES.PASSWORD,
+                    ]
+                ),
+                new Input(
+                    {
+                        label: "Phone",
+                        name: "phone",
+                        type: "text",
+                    },
+                    [Input.VALIDATE_RULES.REQUIRED, Input.VALIDATE_RULES.PHONE]
+                ),
             ],
             buttons: [
                 new Button({

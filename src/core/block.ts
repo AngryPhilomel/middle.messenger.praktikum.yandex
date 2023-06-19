@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import { BLOCK_EVENTS, Props } from "./types.ts";
+import { BLOCK_EVENTS, Callback, Props } from "./types.ts";
 import EventBus from "./event-bus.ts";
 
 export default abstract class Block<T extends Record<string, unknown> = any> {
@@ -11,14 +11,20 @@ export default abstract class Block<T extends Record<string, unknown> = any> {
 
     public children: Record<string, Block | Block[]>;
 
+    private events: Record<string, Callback>;
+
     protected props: T;
 
     private eventBus: () => EventBus;
 
-    constructor(propsWithChildred: T) {
+    constructor(
+        propsWithChildred: T,
+        private eventQuery: string | null = null
+    ) {
         const eventBus = new EventBus();
         const { props: parsedProps, children } =
             this.getChildrenAndProps(propsWithChildred);
+        this.events = parsedProps.events as Record<string, Callback>;
         this.children = children;
         this.props = this.makeProxyProps(parsedProps);
         this.eventBus = () => eventBus;
@@ -141,16 +147,31 @@ export default abstract class Block<T extends Record<string, unknown> = any> {
         return temp.content;
     }
 
+    public on(eventName: string, callback: Callback) {
+        if (!this.events) {
+            this.events = {};
+        }
+        this.events[eventName] = callback;
+        let eventTarget = this.element;
+        if (this.eventQuery) {
+            eventTarget =
+                eventTarget?.querySelector(this.eventQuery) || this.element;
+        }
+        eventTarget?.addEventListener(eventName, this.events[eventName]);
+    }
+
     private _addEvents() {
-        const { events } = this.props as T & {
-            events: Record<string, () => void>;
-        };
-        if (!events) {
+        if (!this.events) {
             return;
         }
+        let eventTarget = this.element;
+        if (this.eventQuery) {
+            eventTarget =
+                eventTarget?.querySelector(this.eventQuery) || this.element;
+        }
 
-        Object.keys(events).forEach((eventName) => {
-            this.element?.addEventListener(eventName, events[eventName]);
+        Object.keys(this.events).forEach((eventName) => {
+            eventTarget?.addEventListener(eventName, this.events[eventName]);
         });
     }
 

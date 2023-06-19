@@ -20,22 +20,31 @@ class Login extends Block<LoginProps> {
         return this.compile(template, this.props);
     }
 }
+
 const page = new Login({
     root: new CenteredLayout({
         child: new FormLayout({
             heading: "Sign in",
             inputs: [
-                new Input({
-                    label: "Login",
-                    name: "login",
-                    type: "text",
-                    error: "error!",
-                }),
-                new Input({
-                    label: "Password",
-                    name: "password",
-                    type: "password",
-                }),
+                new Input(
+                    {
+                        label: "Login",
+                        name: "login",
+                        type: "text",
+                    },
+                    [Input.VALIDATE_RULES.REQUIRED, Input.VALIDATE_RULES.LOGIN]
+                ),
+                new Input(
+                    {
+                        label: "Password",
+                        name: "password",
+                        type: "password",
+                    },
+                    [
+                        Input.VALIDATE_RULES.REQUIRED,
+                        Input.VALIDATE_RULES.PASSWORD,
+                    ]
+                ),
             ],
             buttons: [
                 new Button({

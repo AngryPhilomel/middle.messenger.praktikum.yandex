@@ -1,6 +1,4 @@
 export type Callback = (...args: unknown[]) => unknown;
-// export type Callback = <T extends readonly unknown[]>(...args: T) => unknown;
-// export type Callback = (...args: T[]) => void;
 export type CallbackList = Callback[];
 export enum BLOCK_EVENTS {
     INIT = "init",

@@ -9,11 +9,7 @@ import SelectedChat from "../../selected-chat";
 import NotSelectedChat from "../../not-selected-chat";
 
 interface TwoSideLayoutProps extends Record<string, unknown> {
-    // selectedChat: number | null;
     chats: ChatItem[];
-    // side: Block | Block[];
-    // messenger: Block;
-    // empty: Block;
 }
 
 export default class TwoSideLayout extends Block<TwoSideLayoutProps> {
@@ -49,7 +45,7 @@ export default class TwoSideLayout extends Block<TwoSideLayoutProps> {
                 })
         );
         this.children.messenger = new SelectedChat({
-            chat: this.props.chats[this.props.selectedChat!],
+            chat: this.props.chats[this.props.selectedChat as number],
         });
         this.children.empty = new NotSelectedChat({});
     }

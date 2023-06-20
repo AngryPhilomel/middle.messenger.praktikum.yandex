@@ -13,6 +13,10 @@ export default class Chat extends Block<ChatProps> {
         super(props);
     }
 
+    public getChatId() {
+        return this.props.chat.id;
+    }
+
     init() {
         this.children.avatar = new Avatar({
             src: this.props.chat.avatar,
@@ -21,7 +25,6 @@ export default class Chat extends Block<ChatProps> {
     }
 
     render() {
-        console.log("RENDER", this.props.chat.id, this.props.isSelected);
         const { chat } = this.props;
         const template = Handlebars.compile(tmpl(chat, this.props.isSelected));
         return this.compile(template, this.props);

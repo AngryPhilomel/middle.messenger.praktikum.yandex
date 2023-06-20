@@ -6,16 +6,27 @@ import { ChatItem } from "../../core/types.ts";
 import Input from "../ui/input";
 
 interface SelectedChatProps extends Record<string, unknown> {
-    chat: ChatItem;
+    chat: ChatItem | null;
 }
 export default class SelectedChat extends Block<SelectedChatProps> {
     constructor(props: SelectedChatProps) {
         super(props);
     }
 
+    public setChat(chat: ChatItem | null) {
+        if (!chat) {
+            return;
+        }
+        this.setProps({ chat });
+        (this.children.avatar as Avatar).setProps({
+            src: chat.avatar,
+        });
+    }
+
     init() {
+        // if (!this.props.chat) return;
         this.children.avatar = new Avatar({
-            src: this.props.chat.avatar,
+            src: this.props.chat?.avatar || undefined,
             small: true,
         });
         this.children.message = new Input({

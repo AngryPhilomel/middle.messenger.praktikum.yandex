@@ -21,6 +21,14 @@ export default class TwoSideLayout extends Block<TwoSideLayoutProps> {
         this.setProps({
             selectedChat: id,
         });
+        (this.children.side as Chat[]).forEach((chat) =>
+            chat.setProps({
+                isSelected: chat.getChatId() === id,
+            })
+        );
+        (this.children.messenger as SelectedChat).setChat(
+            this.props.chats.find((c) => c.id === id) || null
+        );
     }
 
     init() {
@@ -39,13 +47,15 @@ export default class TwoSideLayout extends Block<TwoSideLayoutProps> {
                     events: {
                         click: () => {
                             this.updateSelectedChat(chat.id);
-                            console.log(chat.id, this.props.selectedChat);
                         },
                     },
                 })
         );
         this.children.messenger = new SelectedChat({
-            chat: this.props.chats[this.props.selectedChat as number],
+            chat:
+                this.props.chats.find(
+                    (c) => c.id === this.props.selectedChat
+                ) || null,
         });
         this.children.empty = new NotSelectedChat({});
     }

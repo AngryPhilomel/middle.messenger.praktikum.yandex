@@ -88,7 +88,7 @@ export default abstract class Block<T extends Record<string, unknown> = any> {
     }
 
     public componentDidUpdate(oldProps: Props, newProps: Props) {
-        return oldProps !== newProps;
+        return JSON.stringify(oldProps) !== JSON.stringify(newProps);
     }
 
     private _render() {

@@ -46,7 +46,7 @@ interface SelectedChatProps extends Record<string, unknown> {
 }
 export default class SelectedChat extends Block<SelectedChatProps> {
     constructor(props: SelectedChatProps) {
-        super(props);
+        super(props, "form");
     }
 
     public setChat(chat: ChatItem | null) {
@@ -60,6 +60,19 @@ export default class SelectedChat extends Block<SelectedChatProps> {
     }
 
     init() {
+        this.on("submit", (event) => {
+            const e = event as SubmitEvent & { target: HTMLFormElement };
+            e.preventDefault();
+            const data = new FormData(e.target);
+            const formDataObj: Record<string, unknown> = {};
+            data.forEach((value, key) => {
+                formDataObj[key] = value;
+            });
+            const message = this.children.message as Input;
+            if (!message.validate(message.getValue(), true)) {
+                console.log(formDataObj);
+            }
+        });
         this.children.avatar = new Avatar({
             src: this.props.chat?.avatar || undefined,
             small: true,
@@ -71,10 +84,13 @@ export default class SelectedChat extends Block<SelectedChatProps> {
                     isMyself: message.user_id === 1,
                 })
         );
-        this.children.message = new Input({
-            name: "message",
-            placeholder: "Message",
-        });
+        this.children.message = new Input(
+            {
+                name: "message",
+                placeholder: "Message",
+            },
+            [Input.VALIDATE_RULES.REQUIRED]
+        );
     }
 
     render() {

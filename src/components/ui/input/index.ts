@@ -35,7 +35,7 @@ export default class Input extends Block<InputProps> {
         return this.getContent().querySelector("input")!.name;
     }
 
-    public validate(value: string) {
+    public validate(value: string, preventErrorMessage = false) {
         let errorMessage = "";
         return this.rules.reduce((err, rule) => {
             if (err) {
@@ -94,6 +94,9 @@ export default class Input extends Block<InputProps> {
                     break;
                 default:
                     throw new Error("Event does not exist");
+            }
+            if (preventErrorMessage) {
+                return err;
             }
             if (err && errorMessage) {
                 this.setProps({ error: errorMessage, value });

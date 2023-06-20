@@ -15,7 +15,7 @@ const tmpl = () => `
                     <li>File</li>
                     <li>Location</li>
                 </ul>
-                <button id="message-attach" class="${styles["selected__footer__button"]} ${styles["selected__footer__button_attach"]}"></button>
+                <button type="button" class="${styles["selected__footer__button"]} ${styles["selected__footer__button_attach"]}"></button>
                 <div class="${styles["selected__footer__input"]}">{{{message}}}</div>
                 <button class="${styles["selected__footer__button"]} ${styles["selected__footer__button_send"]}" type="submit"></button>
             </div>

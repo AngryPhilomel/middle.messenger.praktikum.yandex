@@ -15,19 +15,23 @@ export default class FormLayout extends Block<FormProps> {
 
     init() {
         this.on("submit", (event) => {
-            const e = event as SubmitEvent;
+            const e = event as SubmitEvent & { target: HTMLFormElement };
             e.preventDefault();
+            const data = new FormData(e.target);
+            const formDataObj: Record<string, unknown> = {};
+            data.forEach((value, key) => {
+                formDataObj[key] = value;
+            });
             if (Array.isArray(this.children.inputs)) {
-                const result: Record<string, string> = {};
                 const errs = this.children.inputs.map((input) => {
                     const i: Input = input as Input;
                     const name = i.getName();
                     const value = i.getValue();
                     if (
                         (name === "password_again" &&
-                            result["password"] !== value) ||
+                            formDataObj["password"] !== value) ||
                         (name === "newPasswordRepeat" &&
-                            result["newPassword"] !== value)
+                            formDataObj["newPassword"] !== value)
                     ) {
                         input.setProps({
                             error: "Passwords not same",
@@ -35,15 +39,14 @@ export default class FormLayout extends Block<FormProps> {
                         });
                         return true;
                     }
-                    result[name] = value;
-
                     return i.validate(value);
                 });
                 if (!errs.includes(true)) {
-                    console.log(result);
+                    console.log(formDataObj);
                 }
             }
         });
+
         if (Array.isArray(this.children.inputs)) {
             this.children.inputs.forEach((input) => {
                 input.on("blur", function (e) {

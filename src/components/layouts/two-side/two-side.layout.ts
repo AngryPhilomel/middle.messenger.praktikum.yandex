@@ -12,7 +12,7 @@ const tmpl = () => `
                 {{{side}}}
             </ul>
         </aside>
-        <main class="${styles["two-side__main"]}">
+        <main>
 {{#if selectedChat }}
     {{{messenger}}}
 {{else}}

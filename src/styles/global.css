@@ -13,6 +13,8 @@
     --controls-focus: #45b6fc;
     --chat-focus: rgb(51 105 243 / 50%);
     --chat-active: rgb(51 105 243 / 30%);
+    --chat-message: #1d2023;
+    --chat-message-myself: rgb(0 124 255 / 30%);
     --error-color: #ffa080;
     --chat-header-height: 120px;
 }

@@ -1,7 +1,7 @@
 .selected {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 54px 1fr 54px;
+    grid-template-rows: 54px calc(100vh - 54px * 2 - 10px * 2) 54px;
     grid-template-areas:
         "."
         "."
@@ -39,8 +39,11 @@
 }
 
 .selected-messages {
-    place-self: center;
+    display: flex;
+    flex-direction: column-reverse;
     color: var(--text-color-secondary);
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .selected__footer {

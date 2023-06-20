@@ -1,9 +1,9 @@
-const METHODS = {
-    GET: "GET",
-    POST: "POST",
-    PUT: "PUT",
-    DELETE: "DELETE",
-};
+enum METHODS {
+    GET = "GET",
+    POST = "POST",
+    PUT = "PUT",
+    DELETE = "DELETE",
+}
 
 function queryStringify(data: Record<string, unknown>) {
     if (typeof data !== "object") {

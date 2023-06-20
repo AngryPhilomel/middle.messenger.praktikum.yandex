@@ -7,10 +7,6 @@ export enum BLOCK_EVENTS {
     FLOW_CDU = "flow:component-did-update",
 }
 export type Props = Record<string, unknown>;
-export type BlockMeta = {
-    // tagName: string;
-    props: Props;
-};
 
 export type ChatItem = {
     id: number;
@@ -18,15 +14,38 @@ export type ChatItem = {
     avatar: string;
     unread_count: number;
     last_message: {
-        user: {
-            first_name: string;
-            second_name: string;
-            avatar: string;
-            email: string;
-            login: string;
-            phone: string;
-        };
+        user: UserResponse;
         time: string;
         content: string;
     };
+};
+
+export type UserResponse = {
+    first_name: string;
+    second_name: string;
+    display_name: string;
+    avatar: string;
+    email: string;
+    login: string;
+    phone: string;
+};
+
+export type ChatMessage = {
+    id: number;
+    user_id: number;
+    chat_id: number;
+    time: string;
+    type: string;
+    content: string;
+    file?: Resource;
+};
+
+export type Resource = {
+    id: number;
+    user_id: number;
+    path: string;
+    filename: string;
+    content_type: string;
+    content_size: number;
+    upload_date: string;
 };

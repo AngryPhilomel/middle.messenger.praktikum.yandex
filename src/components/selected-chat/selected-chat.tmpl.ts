@@ -7,7 +7,7 @@ const tmpl = () => `
             <span class="${styles["selected__header__chat-name"]}">{{chat.title}}</span>
             <button id="chat-menu" class="${styles["selected__header__menu"]}"></button>
         </div>
-        <div class="${styles["selected-messages"]}">{{chat.id}}</div>
+        <div class="${styles["selected-messages"]}">{{{messageFeed}}}</div>
         <form>
             <div class="${styles["selected__footer"]}">
                 <ul id="attach-menu" class="${styles["selected__footer__attach-menu"]}" data-visible="false">

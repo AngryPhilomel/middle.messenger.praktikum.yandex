@@ -2,6 +2,7 @@ import Handlebars from "handlebars";
 import Block from "../../core/block.ts";
 import tmpl from "./main.tmpl.ts";
 import TwoSideLayout from "../../components/layouts/two-side";
+import { ChatItem } from "../../core/types.ts";
 
 interface MessengerProps extends Record<string, unknown> {
     root: Block;
@@ -17,7 +18,7 @@ class Messenger extends Block<MessengerProps> {
     }
 }
 
-const chats = [
+const chats: ChatItem[] = [
     {
         id: 1,
         title: "my-chat",
@@ -27,6 +28,7 @@ const chats = [
             user: {
                 first_name: "Petya",
                 second_name: "Pupkin",
+                display_name: "PupkinPetya",
                 avatar: "/path/to/avatar.jpg",
                 email: "my@email.com",
                 login: "userLogin",
@@ -46,6 +48,7 @@ const chats = [
             user: {
                 first_name: "Petya",
                 second_name: "Pupkin",
+                display_name: "PupkinPetya",
                 avatar: "/path/to/avatar.jpg",
                 email: "my@email.com",
                 login: "userLogin",
@@ -64,6 +67,7 @@ const chats = [
             user: {
                 first_name: "Petya",
                 second_name: "Pupkin",
+                display_name: "PupkinPetya",
                 avatar: "/path/to/avatar.jpg",
                 email: "my@email.com",
                 login: "userLogin",
@@ -83,6 +87,7 @@ const chats = [
             user: {
                 first_name: "Petya",
                 second_name: "Pupkin",
+                display_name: "PupkinPetya",
                 avatar: "/path/to/avatar.jpg",
                 email: "my@email.com",
                 login: "userLogin",

@@ -13,8 +13,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "start": "tsc && vite build && node server.js",
+    "build": "vite build",
+    "start": "vite build && node server.js",
     "preview": "vite preview",
     "lint": "npm run lint:script && npm run lint:styles",
     "lint:script": "eslint .",

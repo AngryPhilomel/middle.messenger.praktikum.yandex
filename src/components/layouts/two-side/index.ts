@@ -3,7 +3,6 @@ import Block from "../../../core/block.ts";
 import tmpl from "./two-side.layout.ts";
 import Link from "../../ui/link";
 import Input from "../../ui/input";
-import Chat from "../../chat";
 import SelectedChat from "../../selected-chat";
 import NotSelectedChat from "../../not-selected-chat";
 import ChatsController from "../../../controllers/chats-controller.ts";
@@ -17,7 +16,6 @@ export default class TwoSideLayout extends Block<TwoSideLayoutProps> {
         super({ ...props, selectedChat: store.getState().selectedChatId });
         store.on(Store.STORE_EVENTS.UPDATE, this.update.bind(this));
         ChatsController.getChats();
-        console.log(store.getState());
     }
 
     public update() {
@@ -26,24 +24,6 @@ export default class TwoSideLayout extends Block<TwoSideLayoutProps> {
         });
         this.updateChatsList();
         this.updateMessenger();
-    }
-
-    public updateSelectedChat() {
-        this.setProps({
-            selectedChat: store.getState().selectedChatId,
-        });
-        (this.children.side as Chat[]).forEach((chat) =>
-            chat.setProps({
-                isSelected:
-                    chat.getChatId() === store.getState().selectedChatId,
-            })
-        );
-        (this.children.messenger as SelectedChat).setChat(
-            store
-                .getState()
-                .chats.find((c) => c.id === store.getState().selectedChatId) ||
-                null
-        );
     }
 
     private updateChatsList() {

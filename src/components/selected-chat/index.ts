@@ -2,44 +2,10 @@ import Handlebars from "handlebars";
 import Block from "../../core/block.ts";
 import tmpl from "./selected-chat.tmpl.ts";
 import Avatar from "../ui/avatar";
-import { ChatItem, ChatMessage } from "../../core/types.ts";
+import { ChatItem } from "../../core/types.ts";
 import Input from "../ui/input";
 import Message from "../ui/message";
-
-const messages: ChatMessage[] = [
-    {
-        id: 1,
-        user_id: 1,
-        chat_id: 1,
-        time: "2020-01-02T14:22:22.000Z",
-        type: "message",
-        content: "Hello!",
-    },
-    {
-        id: 2,
-        user_id: 2,
-        chat_id: 1,
-        time: "2020-01-02T14:22:23.000Z",
-        type: "message",
-        content: "Hello there!",
-    },
-    {
-        id: 3,
-        user_id: 1,
-        chat_id: 1,
-        time: "2020-01-02T14:22:24.000Z",
-        type: "message",
-        content: "How’s it going?",
-    },
-    {
-        id: 4,
-        user_id: 2,
-        chat_id: 1,
-        time: "2020-01-02T14:22:25.000Z",
-        type: "message",
-        content: "Fine, tnx!",
-    },
-];
+import store from "../../core/store.ts";
 
 interface SelectedChatProps extends Record<string, unknown> {
     chat: ChatItem | null;
@@ -47,16 +13,6 @@ interface SelectedChatProps extends Record<string, unknown> {
 export default class SelectedChat extends Block<SelectedChatProps> {
     constructor(props: SelectedChatProps) {
         super(props, "form");
-    }
-
-    public setChat(chat: ChatItem | null) {
-        if (!chat) {
-            return;
-        }
-        this.setProps({ chat });
-        (this.children.avatar as Avatar).setProps({
-            src: chat.avatar,
-        });
     }
 
     componentDidUpdate(
@@ -67,9 +23,20 @@ export default class SelectedChat extends Block<SelectedChatProps> {
             (this.children.avatar as Avatar).setProps({
                 src: newProps.chat?.avatar,
             });
+            this.children.messageFeed = this.createMessageFeed();
             return true;
         }
         return false;
+    }
+
+    private createMessageFeed() {
+        return store.getState().messages.map(
+            (message) =>
+                new Message({
+                    message,
+                    isMyself: message.user_id === 1,
+                })
+        );
     }
 
     init() {
@@ -90,13 +57,7 @@ export default class SelectedChat extends Block<SelectedChatProps> {
             src: this.props.chat?.avatar || undefined,
             small: true,
         });
-        this.children.messageFeed = messages.map(
-            (message) =>
-                new Message({
-                    message,
-                    isMyself: message.user_id === 1,
-                })
-        );
+        this.children.messageFeed = this.createMessageFeed();
         this.children.message = new Input(
             {
                 name: "message",

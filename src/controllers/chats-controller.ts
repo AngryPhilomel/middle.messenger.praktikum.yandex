@@ -1,7 +1,9 @@
 import store from "../core/store.ts";
+import MessagesController from "./messages-controller.ts";
 
 class ChatsController {
     selectChat(id: number) {
+        MessagesController.getMessages();
         store.set({ selectedChatId: id });
     }
 

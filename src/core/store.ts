@@ -1,9 +1,10 @@
 import EventBus from "./event-bus.ts";
-import { ChatItem, STORE_EVENTS } from "./types.ts";
+import { ChatItem, ChatMessage, STORE_EVENTS } from "./types.ts";
 
 type State = {
     chats: ChatItem[] | [];
     selectedChatId: number | null;
+    messages: ChatMessage[];
 };
 export class Store extends EventBus {
     static STORE_EVENTS = STORE_EVENTS;
@@ -11,6 +12,7 @@ export class Store extends EventBus {
     private state: State = {
         chats: [],
         selectedChatId: null,
+        messages: [],
     };
 
     public set(newState: Partial<State>) {

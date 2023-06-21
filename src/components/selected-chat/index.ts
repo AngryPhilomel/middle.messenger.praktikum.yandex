@@ -59,6 +59,19 @@ export default class SelectedChat extends Block<SelectedChatProps> {
         });
     }
 
+    componentDidUpdate(
+        oldProps: SelectedChatProps,
+        newProps: SelectedChatProps
+    ): boolean {
+        if (JSON.stringify(oldProps) !== JSON.stringify(newProps)) {
+            (this.children.avatar as Avatar).setProps({
+                src: newProps.chat?.avatar,
+            });
+            return true;
+        }
+        return false;
+    }
+
     init() {
         this.on("submit", (event) => {
             const e = event as SubmitEvent & { target: HTMLFormElement };

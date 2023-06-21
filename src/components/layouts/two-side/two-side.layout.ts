@@ -8,9 +8,7 @@ const tmpl = () => `
                 {{{toProfile}}}
                 {{{search}}}
             </div>
-            <ul class="${styles["two-side__aside__chats"]}">
-                {{{side}}}
-            </ul>
+                {{{chatsList}}}
         </aside>
         <main>
 {{#if selectedChat }}

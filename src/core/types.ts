@@ -6,6 +6,11 @@ export enum BLOCK_EVENTS {
     FLOW_RENDER = "flow:render",
     FLOW_CDU = "flow:component-did-update",
 }
+
+export enum STORE_EVENTS {
+    UPDATE = "update",
+}
+
 export type Props = Record<string, unknown>;
 
 export type ChatItem = {

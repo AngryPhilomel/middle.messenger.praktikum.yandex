@@ -3,32 +3,61 @@ import Block from "../../../core/block.ts";
 import tmpl from "./two-side.layout.ts";
 import Link from "../../ui/link";
 import Input from "../../ui/input";
-import { ChatItem } from "../../../core/types.ts";
 import Chat from "../../chat";
 import SelectedChat from "../../selected-chat";
 import NotSelectedChat from "../../not-selected-chat";
+import ChatsController from "../../../controllers/chats-controller.ts";
+import store, { Store } from "../../../core/store.ts";
+import ChatsList from "../chats-list";
 
-interface TwoSideLayoutProps extends Record<string, unknown> {
-    chats: ChatItem[];
-}
+interface TwoSideLayoutProps extends Record<string, unknown> {}
 
 export default class TwoSideLayout extends Block<TwoSideLayoutProps> {
     constructor(props: TwoSideLayoutProps) {
-        super({ ...props, selectedChat: 0 });
+        super({ ...props, selectedChat: store.getState().selectedChatId });
+        store.on(Store.STORE_EVENTS.UPDATE, this.update.bind(this));
+        ChatsController.getChats();
+        console.log(store.getState());
     }
 
-    public updateSelectedChat(id: number) {
+    public update() {
         this.setProps({
-            selectedChat: id,
+            selectedChat: store.getState().selectedChatId,
+        });
+        this.updateChatsList();
+        this.updateMessenger();
+    }
+
+    public updateSelectedChat() {
+        this.setProps({
+            selectedChat: store.getState().selectedChatId,
         });
         (this.children.side as Chat[]).forEach((chat) =>
             chat.setProps({
-                isSelected: chat.getChatId() === id,
+                isSelected:
+                    chat.getChatId() === store.getState().selectedChatId,
             })
         );
         (this.children.messenger as SelectedChat).setChat(
-            this.props.chats.find((c) => c.id === id) || null
+            store
+                .getState()
+                .chats.find((c) => c.id === store.getState().selectedChatId) ||
+                null
         );
+    }
+
+    private updateChatsList() {
+        (this.children.chatsList as ChatsList).setProps({
+            chats: store.getState().chats,
+        });
+    }
+
+    private updateMessenger() {
+        (this.children.messenger as SelectedChat).setProps({
+            chat: store
+                .getState()
+                .chats.find((c) => c.id === store.getState().selectedChatId),
+        });
     }
 
     init() {
@@ -39,23 +68,16 @@ export default class TwoSideLayout extends Block<TwoSideLayoutProps> {
         this.children.search = new Input({
             placeholder: "Search",
         });
-        this.children.side = this.props.chats.map(
-            (chat) =>
-                new Chat({
-                    chat,
-                    isSelected: chat.id === this.props.selectedChat,
-                    events: {
-                        click: () => {
-                            this.updateSelectedChat(chat.id);
-                        },
-                    },
-                })
-        );
+        this.children.chatsList = new ChatsList({
+            chats: store.getState().chats,
+        });
         this.children.messenger = new SelectedChat({
             chat:
-                this.props.chats.find(
-                    (c) => c.id === this.props.selectedChat
-                ) || null,
+                store
+                    .getState()
+                    .chats.find(
+                        (c) => c.id === store.getState().selectedChatId
+                    ) || null,
         });
         this.children.empty = new NotSelectedChat({});
     }

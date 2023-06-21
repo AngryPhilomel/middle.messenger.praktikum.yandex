@@ -30,8 +30,8 @@ export default class ChatsList extends Block<ChatsListProps> {
     }
 
     componentDidUpdate(
-        oldProps: ChatsListProps,
-        newProps: ChatsListProps
+        _oldProps: ChatsListProps,
+        _newProps: ChatsListProps
     ): boolean {
         this.children.chats = this.createChats();
         return true;

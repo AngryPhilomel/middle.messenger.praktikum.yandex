@@ -27,8 +27,9 @@ interface Options {
     data: Record<string, unknown>;
     timeout: number;
 }
+type HTTPMethod = (url: string, options: Partial<Options>) => Promise<unknown>;
 class HTTPTransport {
-    get = (url: string, options: Partial<Options> = {}) => {
+    get: HTTPMethod = (url, options = {}) => {
         return this.request(
             url,
             { ...options, method: METHODS.GET },
@@ -36,7 +37,7 @@ class HTTPTransport {
         );
     };
 
-    post = (url: string, options: Partial<Options> = {}) => {
+    post: HTTPMethod = (url, options = {}) => {
         return this.request(
             url,
             { ...options, method: METHODS.POST },
@@ -44,7 +45,7 @@ class HTTPTransport {
         );
     };
 
-    put = (url: string, options: Partial<Options> = {}) => {
+    put: HTTPMethod = (url, options = {}) => {
         return this.request(
             url,
             { ...options, method: METHODS.PUT },
@@ -52,7 +53,7 @@ class HTTPTransport {
         );
     };
 
-    delete = (url: string, options: Partial<Options> = {}) => {
+    delete: HTTPMethod = (url, options = {}) => {
         return this.request(
             url,
             { ...options, method: METHODS.DELETE },

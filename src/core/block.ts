@@ -94,6 +94,7 @@ export default abstract class Block<T extends Record<string, unknown> = any> {
     private _render() {
         const block = this.render();
         const newElement = block.firstElementChild as HTMLElement;
+        this._removeEvents();
         if (this.element && newElement) {
             this.element.replaceWith(newElement);
         }
@@ -152,11 +153,7 @@ export default abstract class Block<T extends Record<string, unknown> = any> {
             this.events = {};
         }
         this.events[eventName] = callback;
-        let eventTarget = this.element;
-        if (this.eventQuery) {
-            eventTarget =
-                eventTarget?.querySelector(this.eventQuery) || this.element;
-        }
+        const eventTarget = this.getEventTarget();
         eventTarget?.addEventListener(eventName, this.events[eventName]);
     }
 
@@ -164,15 +161,29 @@ export default abstract class Block<T extends Record<string, unknown> = any> {
         if (!this.events) {
             return;
         }
+        const eventTarget = this.getEventTarget();
+        Object.keys(this.events).forEach((eventName) => {
+            eventTarget?.addEventListener(eventName, this.events[eventName]);
+        });
+    }
+
+    private _removeEvents() {
+        if (!this.events) {
+            return;
+        }
+        const eventTarget = this.getEventTarget();
+        Object.keys(this.events).forEach((eventName) => {
+            eventTarget?.removeEventListener(eventName, this.events[eventName]);
+        });
+    }
+
+    private getEventTarget() {
         let eventTarget = this.element;
         if (this.eventQuery) {
             eventTarget =
                 eventTarget?.querySelector(this.eventQuery) || this.element;
         }
-
-        Object.keys(this.events).forEach((eventName) => {
-            eventTarget?.addEventListener(eventName, this.events[eventName]);
-        });
+        return eventTarget;
     }
 
     public setProps(nextProps: Props) {

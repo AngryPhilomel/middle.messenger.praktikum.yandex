@@ -46,6 +46,12 @@
     line-height: 16px;
 }
 
+@media (width >= 768px) {
+    .input__error {
+        max-width: 338px;
+    }
+}
+
 .input__input[type="file"]::file-selector-button {
     margin-top: 3px;
     border: none;

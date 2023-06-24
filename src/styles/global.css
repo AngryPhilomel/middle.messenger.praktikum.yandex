@@ -1,31 +1,28 @@
 :root {
     --accent-color: #3369f3;
-    --background-color-main: #000000;
+    --background-color-main: #000;
     --background-color-secondary: #1d2023;
     --background-color-tertiary: #2c3135;
-
-    --text-color-heading: #ffffff;
+    --text-color-heading: #fff;
     --text-color-main: #fafafa;
     --text-color-secondary: #969fa8;
     --text-color-tertiary: #626c77;
-
-    --stroke-color: rgba(127, 140, 153, 0.35);
-
-    --controls-background: rgba(98, 108, 119, 0.25);
-    --controls-hover: #ffffff;
+    --stroke-color: rgb(127 140 153 / 35%);
+    --controls-background: rgb(98 108 119 / 25%);
+    --controls-hover: #fff;
     --controls-focus: #45b6fc;
-
-    --chat-focus: rgba(51, 105, 243, 0.3);
-
+    --chat-focus: rgb(51 105 243 / 50%);
+    --chat-active: rgb(51 105 243 / 30%);
+    --chat-message: #1d2023;
+    --chat-message-myself: rgb(0 124 255 / 30%);
     --error-color: #ffa080;
-
     --chat-header-height: 120px;
 }
 
 body {
     color: var(--text-color-main);
     background-color: var(--background-color-main);
-    font-family: "Roboto", sans-serif;
+    font-family: Roboto, sans-serif;
 }
 
 *,

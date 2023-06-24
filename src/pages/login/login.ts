@@ -1,17 +1,66 @@
 import Handlebars from "handlebars";
-import form from "./login.tmpl.ts";
+import tmpl from "./login.tmpl.ts";
+import Button from "../../components/ui/button";
+import CenteredLayout from "../../components/layouts/centered-layout";
+import Block from "../../core/block.ts";
+import FormLayout from "../../components/layouts/form";
+import Input from "../../components/ui/input";
+import Link from "../../components/ui/link";
+
+interface LoginProps extends Record<string, unknown> {
+    root: Block;
+}
+class Login extends Block<LoginProps> {
+    constructor(props: LoginProps) {
+        super(props);
+    }
+
+    render() {
+        const template = Handlebars.compile(tmpl());
+        return this.compile(template, this.props);
+    }
+}
+
+const page = new Login({
+    root: new CenteredLayout({
+        child: new FormLayout({
+            heading: "Sign in",
+            inputs: [
+                new Input(
+                    {
+                        label: "Login",
+                        name: "login",
+                        type: "text",
+                    },
+                    [Input.VALIDATE_RULES.REQUIRED, Input.VALIDATE_RULES.LOGIN]
+                ),
+                new Input(
+                    {
+                        label: "Password",
+                        name: "password",
+                        type: "password",
+                    },
+                    [
+                        Input.VALIDATE_RULES.REQUIRED,
+                        Input.VALIDATE_RULES.PASSWORD,
+                    ]
+                ),
+            ],
+            buttons: [
+                new Button({
+                    text: "Sign in",
+                    type: "submit",
+                }),
+                new Link({
+                    text: "Sign up",
+                    href: "../register/register.html",
+                }),
+            ],
+        }),
+    }),
+});
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.querySelector("#app");
-    const template = Handlebars.compile(form);
-
-    root!.innerHTML = template({
-        heading: "Sign in",
-        inputs: [
-            { label: "Login", name: "login", type: "text", error: "error!" },
-            { label: "Password", name: "password", type: "password" },
-        ],
-        formButton: { text: "Sign in" },
-        altButton: { text: "Sign up", href: "../register/register.html" },
-    });
+    root!.append(page.getContent());
 });

@@ -20,6 +20,15 @@ npm run build
 npm run prewiew
 ```
 
+#### Линтинг
+```shell
+npm run lint # запустить все проверки
+npm run lint:script # запустить проверки скриптов
+npm run lint:script:fix # запустить проверки скриптов с автоисправлением
+npm run lint:styles # запустить проверки стилей
+npm run lint:styles:fix # запустить проверки стилей с автоисправлением
+```
+
 #### Страницы
 1. Main [dev](http://localhost:5173/) | [локально](http://localhost:3000/) | [Netlify](https://philomel.netlify.app/)
 1. 404 [dev](http://localhost:5173/pages/404/404.html) | [локально](http://localhost:3000/pages/404/404.html) | [Netlify](https://philomel.netlify.app/pages/404/404.html)

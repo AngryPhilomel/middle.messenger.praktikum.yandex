@@ -1,0 +1,27 @@
+.centered {
+    display: grid;
+    min-height: 100vh;
+}
+
+.centered__content {
+    place-self: center;
+    background-color: var(--background-color-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--stroke-color);
+    width: 100%;
+    padding: 30px 20px 20px;
+}
+
+@media (width >= 374px) {
+    .centered {
+        padding: 30px;
+    }
+}
+
+@media (width >= 767px) {
+    .centered__content {
+        width: auto;
+        min-width: 400px;
+        padding: 50px 30px 30px;
+    }
+}

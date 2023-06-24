@@ -1,0 +1,23 @@
+.message {
+    display: flex;
+    flex-direction: column;
+    padding: 11px;
+    margin: 5px auto 5px 5px;
+    background-color: var(--chat-message);
+    border-radius: 8px;
+    width: max-content;
+}
+
+.message > p {
+    margin: 0;
+}
+
+.message > span {
+    margin-left: auto;
+    font-size: 9px;
+}
+
+.message_myself {
+    margin: 5px 5px 5px auto;
+    background-color: var(--chat-message-myself);
+}

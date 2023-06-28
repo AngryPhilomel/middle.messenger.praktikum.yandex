@@ -1,7 +1,18 @@
 ### Учебный проект "Мессенджер" курса "Мидл фронтенд-разработчик"
 
 [FIGMA](https://www.figma.com/file/WRgsIYPeE5HbjkPW8Fg7Ho/Chat_external_link-(Copy)?type=design&node-id=0-1&t=gsQ2fFSjwtv0InAl-0)
-[philomel.netlify.app](https://philomel.netlify.app/)
+
+![Website](https://img.shields.io/website?url=https%3A%2F%2Fphilomel.netlify.app%2F&label=philomel.netlify.app)
+
+
+
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c049fb1e-4c74-46c1-bea8-e4db0ce76715/deploy-status)](https://app.netlify.com/sites/philomel/deploys)
+![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/m/AngryPhilomel/middle.messenger.praktikum.yandex)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/AngryPhilomel/middle.messenger.praktikum.yandex)
+
+
+
 
 #### Устанока и запуск для разработки
 ```shell

@@ -30,3 +30,14 @@ body {
 *::after {
     box-sizing: border-box;
 }
+
+div::-webkit-scrollbar,
+ul::-webkit-scrollbar {
+    display: none;
+}
+
+div,
+ul {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

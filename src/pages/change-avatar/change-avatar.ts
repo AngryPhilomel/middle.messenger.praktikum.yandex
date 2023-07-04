@@ -8,8 +8,9 @@ import Input from "../../components/ui/input";
 import Button from "../../components/ui/button";
 import Avatar from "../../components/ui/avatar";
 import FormLayout from "../../components/layouts/form";
+import { Routes } from "../../index.ts";
 
-class ChangeAvatar extends Block {
+export default class ChangeAvatar extends Block {
     constructor() {
         super({});
     }
@@ -19,7 +20,7 @@ class ChangeAvatar extends Block {
             child: new ProfileLayout({
                 backButton: new Link({
                     text: "❮ Back",
-                    href: "../profile/profile.html",
+                    href: Routes.Profile,
                 }),
                 avatar: avatarElement,
                 form: new FormLayout({
@@ -79,10 +80,3 @@ function showAvatar(
     };
     reader.readAsDataURL(img);
 }
-
-const page = new ChangeAvatar();
-
-document.addEventListener("DOMContentLoaded", () => {
-    const root = document.querySelector("#app");
-    root!.append(page.getContent());
-});

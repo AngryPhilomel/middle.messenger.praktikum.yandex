@@ -7,8 +7,9 @@ import ProfileLayout from "../../components/layouts/profile";
 import Link from "../../components/ui/link";
 import Button from "../../components/ui/button";
 import FormLayout from "../../components/layouts/form";
+import { Routes } from "../../index.ts";
 
-class ChangePassword extends Block {
+export default class ChangePassword extends Block {
     constructor() {
         super({});
     }
@@ -18,7 +19,7 @@ class ChangePassword extends Block {
             child: new ProfileLayout({
                 backButton: new Link({
                     text: "❮ Back",
-                    href: "../profile/profile.html",
+                    href: Routes.Profile,
                 }),
                 form: new FormLayout({
                     inputs: inputs.map(
@@ -59,10 +60,3 @@ const inputs = [
         rules: [Input.VALIDATE_RULES.REQUIRED, Input.VALIDATE_RULES.PASSWORD],
     },
 ];
-
-const page = new ChangePassword();
-
-document.addEventListener("DOMContentLoaded", () => {
-    const root = document.querySelector("#app");
-    root!.append(page.getContent());
-});

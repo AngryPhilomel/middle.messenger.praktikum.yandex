@@ -7,8 +7,9 @@ import ProfileLayout from "../../components/layouts/profile";
 import Link from "../../components/ui/link";
 import Button from "../../components/ui/button";
 import FormLayout from "../../components/layouts/form";
+import { Routes } from "../../index.ts";
 
-class ChangeProfile extends Block {
+export default class ChangeProfile extends Block {
     constructor() {
         super({});
     }
@@ -18,7 +19,7 @@ class ChangeProfile extends Block {
             child: new ProfileLayout({
                 backButton: new Link({
                     text: "❮ Back",
-                    href: "../profile/profile.html",
+                    href: Routes.Profile,
                 }),
                 form: new FormLayout({
                     inputs: inputs.map(
@@ -94,10 +95,3 @@ const inputs = [
         rules: [Input.VALIDATE_RULES.REQUIRED, Input.VALIDATE_RULES.PHONE],
     },
 ];
-
-const page = new ChangeProfile();
-
-document.addEventListener("DOMContentLoaded", () => {
-    const root = document.querySelector("#app");
-    root!.append(page.getContent());
-});

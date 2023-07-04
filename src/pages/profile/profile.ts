@@ -7,8 +7,9 @@ import ProfileLayout from "../../components/layouts/profile";
 import Link from "../../components/ui/link";
 import Avatar from "../../components/ui/avatar";
 import FormLayout from "../../components/layouts/form";
+import { Routes } from "../../index.ts";
 
-class Profile extends Block {
+export default class Profile extends Block {
     constructor() {
         super({});
     }
@@ -19,14 +20,14 @@ class Profile extends Block {
             child: new ProfileLayout({
                 backButton: new Link({
                     text: "❮ Back",
-                    href: "../../index.html",
+                    href: Routes.Messenger,
                 }),
                 avatar: new Avatar({
                     src: user.avatar,
                     changeable: true,
                     changeLink: new Link({
                         text: "change avatar",
-                        href: "../change-avatar/change-avatar.html",
+                        href: Routes.ChangeAvatar,
                     }),
                 }),
                 form: new FormLayout({
@@ -34,15 +35,15 @@ class Profile extends Block {
                     buttons: [
                         new Link({
                             text: "Change profile data",
-                            href: "../change-profile/change-profile.html",
+                            href: Routes.ChangeProfile,
                         }),
                         new Link({
                             text: "Change password",
-                            href: "../change-password/change-password.html",
+                            href: Routes.ChangePassword,
                         }),
                         new Link({
                             text: "Logout",
-                            href: "./logout",
+                            href: Routes.Logout,
                             negative: true,
                         }),
                     ],
@@ -112,10 +113,3 @@ const inputs = [
         disabled: true,
     },
 ];
-
-const page = new Profile();
-
-document.addEventListener("DOMContentLoaded", () => {
-    const root = document.querySelector("#app");
-    root!.append(page.getContent());
-});

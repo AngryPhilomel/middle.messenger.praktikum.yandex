@@ -6,8 +6,9 @@ import Block from "../../core/block.ts";
 import FormLayout from "../../components/layouts/form";
 import Input from "../../components/ui/input";
 import Link from "../../components/ui/link";
+import { Routes } from "../../index.ts";
 
-class Login extends Block {
+export default class Login extends Block {
     constructor() {
         super({});
     }
@@ -47,7 +48,7 @@ class Login extends Block {
                     }),
                     new Link({
                         text: "Sign up",
-                        href: "../register/register.html",
+                        href: Routes.Register,
                     }),
                 ],
             }),
@@ -59,10 +60,3 @@ class Login extends Block {
         return this.compile(template, this.props);
     }
 }
-
-const page = new Login();
-
-document.addEventListener("DOMContentLoaded", () => {
-    const root = document.querySelector("#app");
-    root!.append(page.getContent());
-});

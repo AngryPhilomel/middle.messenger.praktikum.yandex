@@ -8,6 +8,7 @@ import NotSelectedChat from "../../not-selected-chat";
 import ChatsController from "../../../controllers/chats-controller.ts";
 import store, { Store } from "../../../core/store.ts";
 import ChatsList from "../chats-list";
+import { Routes } from "../../../index.ts";
 
 interface TwoSideLayoutProps extends Record<string, unknown> {}
 
@@ -43,7 +44,7 @@ export default class TwoSideLayout extends Block<TwoSideLayoutProps> {
     init() {
         this.children.toProfile = new Link({
             text: "Profile ❯",
-            href: "../../pages/profile/profile.html",
+            href: Routes.Profile,
         });
         this.children.search = new Input({
             placeholder: "Search",

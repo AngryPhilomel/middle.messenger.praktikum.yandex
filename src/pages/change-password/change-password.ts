@@ -8,12 +8,29 @@ import Link from "../../components/ui/link";
 import Button from "../../components/ui/button";
 import FormLayout from "../../components/layouts/form";
 
-interface ChangePasswordProps extends Record<string, unknown> {
-    root: Block;
-}
-class ChangePassword extends Block<ChangePasswordProps> {
-    constructor(props: ChangePasswordProps) {
-        super(props);
+class ChangePassword extends Block {
+    constructor() {
+        super({});
+    }
+
+    protected init() {
+        this.children.root = new CenteredLayout({
+            child: new ProfileLayout({
+                backButton: new Link({
+                    text: "❮ Back",
+                    href: "../profile/profile.html",
+                }),
+                form: new FormLayout({
+                    inputs: inputs.map(
+                        (input) => new Input({ ...input }, input.rules)
+                    ),
+                    buttons: new Button({
+                        text: "Save",
+                        type: "submit",
+                    }),
+                }),
+            }),
+        });
     }
 
     render() {
@@ -43,25 +60,7 @@ const inputs = [
     },
 ];
 
-const page = new ChangePassword({
-    root: new CenteredLayout({
-        child: new ProfileLayout({
-            backButton: new Link({
-                text: "❮ Back",
-                href: "../profile/profile.html",
-            }),
-            form: new FormLayout({
-                inputs: inputs.map(
-                    (input) => new Input({ ...input }, input.rules)
-                ),
-                buttons: new Button({
-                    text: "Save",
-                    type: "submit",
-                }),
-            }),
-        }),
-    }),
-});
+const page = new ChangePassword();
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.querySelector("#app");

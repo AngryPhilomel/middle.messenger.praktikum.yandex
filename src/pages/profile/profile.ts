@@ -8,12 +8,47 @@ import Link from "../../components/ui/link";
 import Avatar from "../../components/ui/avatar";
 import FormLayout from "../../components/layouts/form";
 
-interface ProfileProps extends Record<string, unknown> {
-    root: Block;
-}
-class Profile extends Block<ProfileProps> {
-    constructor(props: ProfileProps) {
-        super(props);
+class Profile extends Block {
+    constructor() {
+        super({});
+    }
+
+    protected init() {
+        super.init();
+        this.children.root = new CenteredLayout({
+            child: new ProfileLayout({
+                backButton: new Link({
+                    text: "❮ Back",
+                    href: "../../index.html",
+                }),
+                avatar: new Avatar({
+                    src: user.avatar,
+                    changeable: true,
+                    changeLink: new Link({
+                        text: "change avatar",
+                        href: "../change-avatar/change-avatar.html",
+                    }),
+                }),
+                form: new FormLayout({
+                    inputs: inputs.map((input) => new Input({ ...input })),
+                    buttons: [
+                        new Link({
+                            text: "Change profile data",
+                            href: "../change-profile/change-profile.html",
+                        }),
+                        new Link({
+                            text: "Change password",
+                            href: "../change-password/change-password.html",
+                        }),
+                        new Link({
+                            text: "Logout",
+                            href: "./logout",
+                            negative: true,
+                        }),
+                    ],
+                }),
+            }),
+        });
     }
 
     render() {
@@ -78,42 +113,7 @@ const inputs = [
     },
 ];
 
-const page = new Profile({
-    root: new CenteredLayout({
-        child: new ProfileLayout({
-            backButton: new Link({
-                text: "❮ Back",
-                href: "../../index.html",
-            }),
-            avatar: new Avatar({
-                src: user.avatar,
-                changeable: true,
-                changeLink: new Link({
-                    text: "change avatar",
-                    href: "../change-avatar/change-avatar.html",
-                }),
-            }),
-            form: new FormLayout({
-                inputs: inputs.map((input) => new Input({ ...input })),
-                buttons: [
-                    new Link({
-                        text: "Change profile data",
-                        href: "../change-profile/change-profile.html",
-                    }),
-                    new Link({
-                        text: "Change password",
-                        href: "../change-password/change-password.html",
-                    }),
-                    new Link({
-                        text: "Logout",
-                        href: "./logout",
-                        negative: true,
-                    }),
-                ],
-            }),
-        }),
-    }),
-});
+const page = new Profile();
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.querySelector("#app");

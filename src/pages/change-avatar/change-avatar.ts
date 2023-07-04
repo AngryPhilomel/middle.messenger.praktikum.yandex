@@ -9,12 +9,39 @@ import Button from "../../components/ui/button";
 import Avatar from "../../components/ui/avatar";
 import FormLayout from "../../components/layouts/form";
 
-interface ChangeAvatarProps extends Record<string, unknown> {
-    root: Block;
-}
-class ChangeAvatar extends Block<ChangeAvatarProps> {
-    constructor(props: ChangeAvatarProps) {
-        super(props);
+class ChangeAvatar extends Block {
+    constructor() {
+        super({});
+    }
+
+    protected init() {
+        this.children.root = new CenteredLayout({
+            child: new ProfileLayout({
+                backButton: new Link({
+                    text: "❮ Back",
+                    href: "../profile/profile.html",
+                }),
+                avatar: avatarElement,
+                form: new FormLayout({
+                    inputs: [
+                        new Input({
+                            id: "avatarUpload",
+                            name: "avatar",
+                            label: "Avatar",
+                            type: "file",
+                            accept: "image/*",
+                            events: {
+                                change: showAvatar,
+                            },
+                        }),
+                    ],
+                    buttons: new Button({
+                        text: "Save",
+                        type: "submit",
+                    }),
+                }),
+            }),
+        });
     }
 
     render() {
@@ -53,35 +80,7 @@ function showAvatar(
     reader.readAsDataURL(img);
 }
 
-const page = new ChangeAvatar({
-    root: new CenteredLayout({
-        child: new ProfileLayout({
-            backButton: new Link({
-                text: "❮ Back",
-                href: "../profile/profile.html",
-            }),
-            avatar: avatarElement,
-            form: new FormLayout({
-                inputs: [
-                    new Input({
-                        id: "avatarUpload",
-                        name: "avatar",
-                        label: "Avatar",
-                        type: "file",
-                        accept: "image/*",
-                        events: {
-                            change: showAvatar,
-                        },
-                    }),
-                ],
-                buttons: new Button({
-                    text: "Save",
-                    type: "submit",
-                }),
-            }),
-        }),
-    }),
-});
+const page = new ChangeAvatar();
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.querySelector("#app");

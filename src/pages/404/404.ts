@@ -5,12 +5,22 @@ import CenteredLayout from "../../components/layouts/centered-layout";
 import Link from "../../components/ui/link";
 import ErrorLayout from "../../components/layouts/error";
 
-interface Error404Props extends Record<string, unknown> {
-    root: Block;
-}
-class Error404 extends Block<Error404Props> {
-    constructor(props: Error404Props) {
-        super(props);
+class Error404 extends Block {
+    constructor() {
+        super({});
+    }
+
+    protected init() {
+        this.children.root = new CenteredLayout({
+            child: new ErrorLayout({
+                backButton: new Link({
+                    text: "Back to app",
+                    href: "../../index.html",
+                }),
+                errorCode: "404",
+                errorText: "Not found",
+            }),
+        });
     }
 
     render() {
@@ -19,18 +29,7 @@ class Error404 extends Block<Error404Props> {
     }
 }
 
-const page = new Error404({
-    root: new CenteredLayout({
-        child: new ErrorLayout({
-            backButton: new Link({
-                text: "Back to app",
-                href: "../../index.html",
-            }),
-            errorCode: "404",
-            errorText: "Not found",
-        }),
-    }),
-});
+const page = new Error404();
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.querySelector("#app");

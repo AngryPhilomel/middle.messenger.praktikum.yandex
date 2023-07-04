@@ -5,12 +5,22 @@ import CenteredLayout from "../../components/layouts/centered-layout";
 import Link from "../../components/ui/link";
 import ErrorLayout from "../../components/layouts/error";
 
-interface Error500Props extends Record<string, unknown> {
-    root: Block;
-}
-class Error500 extends Block<Error500Props> {
-    constructor(props: Error500Props) {
-        super(props);
+class Error500 extends Block {
+    constructor() {
+        super({});
+    }
+
+    protected init() {
+        this.children.root = new CenteredLayout({
+            child: new ErrorLayout({
+                backButton: new Link({
+                    text: "Back to app",
+                    href: "../../index.html",
+                }),
+                errorCode: "500",
+                errorText: "We're already fixing it",
+            }),
+        });
     }
 
     render() {
@@ -19,18 +29,7 @@ class Error500 extends Block<Error500Props> {
     }
 }
 
-const page = new Error500({
-    root: new CenteredLayout({
-        child: new ErrorLayout({
-            backButton: new Link({
-                text: "Back to app",
-                href: "../../index.html",
-            }),
-            errorCode: "500",
-            errorText: "We're already fixing it",
-        }),
-    }),
-});
+const page = new Error500();
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.querySelector("#app");

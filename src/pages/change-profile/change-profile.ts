@@ -8,12 +8,29 @@ import Link from "../../components/ui/link";
 import Button from "../../components/ui/button";
 import FormLayout from "../../components/layouts/form";
 
-interface ChangeProfileProps extends Record<string, unknown> {
-    root: Block;
-}
-class ChangeProfile extends Block<ChangeProfileProps> {
-    constructor(props: ChangeProfileProps) {
-        super(props);
+class ChangeProfile extends Block {
+    constructor() {
+        super({});
+    }
+
+    protected init() {
+        this.children.root = new CenteredLayout({
+            child: new ProfileLayout({
+                backButton: new Link({
+                    text: "❮ Back",
+                    href: "../profile/profile.html",
+                }),
+                form: new FormLayout({
+                    inputs: inputs.map(
+                        (input) => new Input({ ...input }, input.rules)
+                    ),
+                    buttons: new Button({
+                        text: "Save",
+                        type: "submit",
+                    }),
+                }),
+            }),
+        });
     }
 
     render() {
@@ -78,25 +95,7 @@ const inputs = [
     },
 ];
 
-const page = new ChangeProfile({
-    root: new CenteredLayout({
-        child: new ProfileLayout({
-            backButton: new Link({
-                text: "❮ Back",
-                href: "../profile/profile.html",
-            }),
-            form: new FormLayout({
-                inputs: inputs.map(
-                    (input) => new Input({ ...input }, input.rules)
-                ),
-                buttons: new Button({
-                    text: "Save",
-                    type: "submit",
-                }),
-            }),
-        }),
-    }),
-});
+const page = new ChangeProfile();
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.querySelector("#app");

@@ -4,13 +4,14 @@ import tmpl from "./main.tmpl.ts";
 import TwoSideLayout from "../../components/layouts/two-side";
 import ChatsController from "../../controllers/chats-controller.ts";
 
-interface MessengerProps extends Record<string, unknown> {
-    root: Block;
-}
-class Messenger extends Block<MessengerProps> {
-    constructor(props: MessengerProps) {
-        super(props);
+class Messenger extends Block {
+    constructor() {
+        super({});
         ChatsController.getChats();
+    }
+
+    protected init() {
+        this.children.root = new TwoSideLayout({});
     }
 
     render() {
@@ -19,9 +20,7 @@ class Messenger extends Block<MessengerProps> {
     }
 }
 
-const page = new Messenger({
-    root: new TwoSideLayout({}),
-});
+const page = new Messenger();
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.querySelector("#app");

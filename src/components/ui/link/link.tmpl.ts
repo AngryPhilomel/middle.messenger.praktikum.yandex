@@ -5,6 +5,6 @@ const tmpl = () => `
     {{#if negative}}
         ${styles["link_negative"]}
     {{/if}}
-    " href={{href}}>{{text}}</a>
+    ">{{text}}</a>
 `;
 export default tmpl;

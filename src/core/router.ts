@@ -52,6 +52,7 @@ class Router {
         if (this.currentRoute) {
             this.currentRoute.leave();
         }
+        this.currentRoute = route;
 
         route.render();
     }

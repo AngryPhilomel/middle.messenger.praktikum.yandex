@@ -9,6 +9,11 @@ import Input from "../../ui/input";
 import FormLayout from "../form";
 import store from "../../../core/store.ts";
 import Button from "../../ui/button";
+import userController from "../../../controllers/user-controller.ts";
+import {
+    UpdatePasswordData,
+    UpdateProfileData,
+} from "../../../api/user-api.ts";
 
 export enum ProfileFormTypes {
     PROFILE,
@@ -61,11 +66,17 @@ export default class ProfileLayout extends Block<ProfileLayoutProps> {
 
     private getSubmitAction(type: ProfileFormTypes) {
         switch (type) {
-            case ProfileFormTypes.PROFILE:
+            case ProfileFormTypes.SETTING:
+                return (data: unknown) => {
+                    userController.updateProfile(data as UpdateProfileData);
+                };
             case ProfileFormTypes.CHANGE_AVATAR:
+                return (data: unknown) => {
+                    userController.updateAvatar(data as FormData);
+                };
             case ProfileFormTypes.CHANGE_PASSWORD:
                 return (data: unknown) => {
-                    console.log(data as UserResponse);
+                    userController.updatePassword(data as UpdatePasswordData);
                 };
             default:
                 return (data: unknown) => {

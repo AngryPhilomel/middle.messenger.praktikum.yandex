@@ -10,9 +10,19 @@ interface AvatarProps extends Record<string, unknown> {
     id?: string;
     src?: string;
 }
+const base = "https://ya-praktikum.tech/api/v2/resources";
+
 export default class Avatar extends Block<AvatarProps> {
     constructor(props: AvatarProps) {
         super(props);
+    }
+
+    protected init() {
+        if (!this.props.src?.startsWith("image")) {
+            this.setProps({
+                src: base + this.props.src,
+            });
+        }
     }
 
     render() {

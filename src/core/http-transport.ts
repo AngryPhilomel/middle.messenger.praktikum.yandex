@@ -24,7 +24,7 @@ function queryStringify(data: Record<string, unknown>) {
 interface Options {
     method: string;
     headers: Record<string, string>;
-    data: Record<string, unknown>;
+    data: Record<string, unknown> | FormData;
     timeout: number;
 }
 type HTTPMethod = <R>(url: string, options?: Partial<Options>) => Promise<R>;
@@ -84,14 +84,16 @@ class HTTPTransport {
 
             xhr.open(
                 method,
-                isGet && !!data ? `${url}${queryStringify(data)}` : url
+                isGet && !!data
+                    ? `${url}${queryStringify(data as Record<string, unknown>)}`
+                    : url
             );
 
             Object.keys(headers).forEach((key) => {
                 xhr.setRequestHeader(key, headers[key]);
             });
 
-            if (!isGet) {
+            if (!isGet && !(data instanceof FormData)) {
                 xhr.setRequestHeader("Content-Type", "application/json");
             }
 
@@ -120,6 +122,8 @@ class HTTPTransport {
 
             if (isGet || !data) {
                 xhr.send();
+            } else if (data instanceof FormData) {
+                xhr.send(data);
             } else {
                 xhr.send(JSON.stringify(data));
             }

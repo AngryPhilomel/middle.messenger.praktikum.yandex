@@ -43,7 +43,11 @@ export default class FormLayout extends Block<FormProps> {
                     return i.validate(value);
                 });
                 if (!errs.includes(true)) {
-                    this.props.onSubmit(formDataObj);
+                    if (data.has("avatar")) {
+                        this.props.onSubmit(data);
+                    } else {
+                        this.props.onSubmit(formDataObj);
+                    }
                 }
             }
         });

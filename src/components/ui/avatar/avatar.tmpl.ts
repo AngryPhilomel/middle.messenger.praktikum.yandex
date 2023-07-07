@@ -15,7 +15,7 @@ const tmpl = () => `
             id="{{id}}"
             {{/if}}
             {{#if src}}
-                src={{src}}
+                src="{{src}}"
             {{else}}
                 src="${none}"
             {{/if}}

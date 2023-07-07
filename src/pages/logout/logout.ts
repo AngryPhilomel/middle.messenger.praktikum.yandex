@@ -2,24 +2,29 @@ import Handlebars from "handlebars";
 import Block from "../../core/block.ts";
 import tmpl from "../change-password/change-password.tmpl.ts";
 import CenteredLayout from "../../components/layouts/centered-layout";
-import ProfileLayout, {
-    ProfileFormTypes,
-} from "../../components/layouts/profile";
+import Link from "../../components/ui/link";
+import ErrorLayout from "../../components/layouts/error";
 import { Routes } from "../../index.ts";
-import store from "../../core/store.ts";
+import authController from "../../controllers/auth-controller.ts";
 
-export default class ChangeAvatar extends Block {
+export default class Logout extends Block {
     constructor() {
         super({});
     }
 
+    componentDidMount() {
+        authController.logout();
+    }
+
     protected init() {
         this.children.root = new CenteredLayout({
-            child: new ProfileLayout({
-                backLink: Routes.Profile,
-                user: store.getState().user!,
-                withAvatar: true,
-                profileFormType: ProfileFormTypes.CHANGE_AVATAR,
+            child: new ErrorLayout({
+                backButton: new Link({
+                    text: "Back to app",
+                    href: Routes.Messenger,
+                }),
+                errorCode: "200",
+                errorText: "Goodbye!",
             }),
         });
     }

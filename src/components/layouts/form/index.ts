@@ -7,6 +7,7 @@ interface FormProps extends Record<string, unknown> {
     heading?: string;
     inputs: Block[];
     buttons: Block | Block[];
+    onSubmit: (data: unknown) => void;
 }
 export default class FormLayout extends Block<FormProps> {
     constructor(props: FormProps) {
@@ -42,7 +43,7 @@ export default class FormLayout extends Block<FormProps> {
                     return i.validate(value);
                 });
                 if (!errs.includes(true)) {
-                    console.log(formDataObj);
+                    this.props.onSubmit(formDataObj);
                 }
             }
         });

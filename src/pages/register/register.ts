@@ -7,6 +7,8 @@ import Input from "../../components/ui/input";
 import Button from "../../components/ui/button";
 import Link from "../../components/ui/link";
 import { Routes } from "../../index.ts";
+import { SignUpData } from "../../api/auth-api.ts";
+import authController from "../../controllers/auth-controller.ts";
 
 export default class Register extends Block {
     constructor() {
@@ -16,6 +18,9 @@ export default class Register extends Block {
     protected init() {
         this.children.root = new CenteredLayout({
             child: new FormLayout({
+                onSubmit: (data: unknown) => {
+                    authController.signUp(data as SignUpData);
+                },
                 heading: "Sign up",
                 inputs: [
                     new Input(

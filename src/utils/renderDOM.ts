@@ -10,6 +10,7 @@ const render = (block: Block) => {
     root.innerHTML = "";
 
     root.append(block.getContent());
+    block.dispatchComponentDidMount();
 };
 
 export default render;

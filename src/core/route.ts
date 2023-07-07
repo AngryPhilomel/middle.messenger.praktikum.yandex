@@ -11,7 +11,6 @@ export default class Route {
     ) {}
 
     public leave() {
-        // this.block?.hide();
         this.block = null;
     }
 

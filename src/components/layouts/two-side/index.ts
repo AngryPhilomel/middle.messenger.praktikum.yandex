@@ -9,8 +9,10 @@ import ChatsController from "../../../controllers/chats-controller.ts";
 import store, { Store } from "../../../core/store.ts";
 import ChatsList from "../chats-list";
 import { Routes } from "../../../index.ts";
+import Button from "../../ui/button/index.ts";
+import Search from "../../search/index.ts";
 
-interface TwoSideLayoutProps extends Record<string, unknown> {}
+interface TwoSideLayoutProps extends Record<string, unknown> { }
 
 export default class TwoSideLayout extends Block<TwoSideLayoutProps> {
     constructor(props: TwoSideLayoutProps) {
@@ -46,9 +48,7 @@ export default class TwoSideLayout extends Block<TwoSideLayoutProps> {
             text: "Profile ❯",
             href: Routes.Profile,
         });
-        this.children.search = new Input({
-            placeholder: "Search",
-        });
+        this.children.search = new Search({})
         this.children.chatsList = new ChatsList({
             chats: store.getState().chats,
         });

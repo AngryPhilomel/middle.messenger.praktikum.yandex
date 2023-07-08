@@ -10,7 +10,7 @@ export class AuthController {
         try {
             await this.api.signIn(data);
             this.getUser();
-            router.go(Routes.Profile);
+            router.go(Routes.Messenger);
         } catch (e) {
             console.log(e);
         }
@@ -20,7 +20,7 @@ export class AuthController {
         try {
             await this.api.signUp(data);
             this.getUser();
-            router.go(Routes.Profile);
+            router.go(Routes.Messenger);
         } catch (e) {
             console.log(e);
         }

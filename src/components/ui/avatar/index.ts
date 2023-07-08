@@ -18,7 +18,7 @@ export default class Avatar extends Block<AvatarProps> {
     }
 
     protected init() {
-        if (!this.props.src?.startsWith("image")) {
+        if (!this.props.src?.startsWith("image") && this.props.src !== null) {
             this.setProps({
                 src: base + this.props.src,
             });

@@ -10,7 +10,7 @@ export default class Search extends Block {
 
     init() {
         this.children.searchField = new Input({
-            placeholder: "Search",
+            placeholder: "Search or create",
             name: "title",
         });
         this.children.createButton = new Button({

@@ -25,17 +25,6 @@
 
 .selected__header__menu {
     margin-left: auto;
-    background: url("./assets/menu.svg") no-repeat 50% 50%;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    border: none;
-    outline: none;
-}
-
-.selected__header__menu:hover,
-.selected__header__menu:focus {
-    background-color: var(--chat-focus);
 }
 
 .selected-messages {

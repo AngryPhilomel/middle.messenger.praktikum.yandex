@@ -6,6 +6,7 @@ import { ChatItem } from "../../core/types.ts";
 import Input from "../ui/input";
 import Message from "../ui/message";
 import store from "../../core/store.ts";
+import ChatMenu from "../chat-menu/index.ts";
 
 interface SelectedChatProps extends Record<string, unknown> {
     chat: ChatItem | null;
@@ -57,6 +58,7 @@ export default class SelectedChat extends Block<SelectedChatProps> {
             src: this.props.chat?.avatar || undefined,
             small: true,
         });
+        this.children.chatMenu = new ChatMenu({})
         this.children.messageFeed = this.createMessageFeed();
         this.children.message = new Input(
             {

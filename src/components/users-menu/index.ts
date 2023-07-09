@@ -12,11 +12,9 @@ export default class UsersMenu extends Block {
     }
 
     init() {
-        // this.on('click', (e) => {
-        //     const event = e as SubmitEvent & { target: HTMLFormElement }
-        // })
         this.children.input = new Input({
-            placeholder: 'User ID'
+            placeholder: 'User ID',
+            type: "number",
         })
         this.children.addButton = new Button({
             type: "submit",
@@ -28,6 +26,7 @@ export default class UsersMenu extends Block {
         this.children.deleteButton = new Button({
             type: "submit",
             text: "-",
+            negative: true,
             events: {
                 click: () => chatsController.deleteUser(parseInt((this.children.input as Input).getValue()), store.getState().selectedChatId!)
             }

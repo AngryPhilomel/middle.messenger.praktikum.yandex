@@ -1,8 +1,10 @@
 import Route from "./route.ts";
 import Block from "./block.ts";
+import authController from "../controllers/auth-controller.ts";
+import { Routes } from "../index.ts";
 
 export interface BlockConstructable<P extends Record<string, unknown> = any> {
-    new (props: P): Block<P>;
+    new(props: P): Block<P>;
 }
 
 class Router {
@@ -23,8 +25,8 @@ class Router {
         Router.__instance = this;
     }
 
-    public use(pathname: string, block: BlockConstructable) {
-        const route = new Route(pathname, block);
+    public use(pathname: string, block: BlockConstructable, isProtected: boolean) {
+        const route = new Route(pathname, block, isProtected);
         this.routes.push(route);
         return this;
     }
@@ -42,11 +44,20 @@ class Router {
         this._onRoute(pathname);
     }
 
-    private _onRoute(pathname: string) {
+    private async _onRoute(pathname: string) {
         const route = this.getRoute(pathname);
         if (!route) {
             this.go("/404");
             return;
+        }
+
+        if (route.isProtected) {
+            try {
+                await authController.getUser()
+            } catch (e) {
+                this.go(Routes.Login)
+                return;
+            }
         }
 
         if (this.currentRoute) {

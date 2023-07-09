@@ -21,3 +21,7 @@
 .button:active {
     transform: scale(98%);
 }
+
+.button_negative {
+    background-color: var(--error-color);
+}

@@ -9,7 +9,6 @@ import Messenger from "./pages/main/main.ts";
 import Error404 from "./pages/404/404.ts";
 import Error500 from "./pages/500/500.ts";
 import Logout from "./pages/logout/logout.ts";
-import authController from "./controllers/auth-controller.ts";
 
 export enum Routes {
     Login = "/",
@@ -25,28 +24,14 @@ export enum Routes {
 }
 
 window.addEventListener("DOMContentLoaded", async () => {
-    Router.use(Routes.Login, Login)
-        .use(Routes.Logout, Logout)
-        .use(Routes.Register, Register)
-        .use(Routes.Profile, Profile)
-        .use(Routes.ChangeProfile, ChangeProfile)
-        .use(Routes.ChangeAvatar, ChangeAvatar)
-        .use(Routes.ChangePassword, ChangePassword)
-        .use(Routes.Messenger, Messenger)
-        .use(Routes.Error404, Error404)
-        .use(Routes.Error500, Error500);
-
-    if (
-        ![Routes.Login, Routes.Register].includes(
-            window.location.pathname as Routes
-        )
-    ) {
-        try {
-            await authController.getUser();
-            Router.start();
-        } catch (e) {
-            Router.start();
-            Router.go(Routes.Login);
-        }
-    }
+    Router.use(Routes.Login, Login, false)
+        .use(Routes.Logout, Logout, true)
+        .use(Routes.Register, Register, false)
+        .use(Routes.Profile, Profile, true)
+        .use(Routes.ChangeProfile, ChangeProfile, true)
+        .use(Routes.ChangeAvatar, ChangeAvatar, true)
+        .use(Routes.ChangePassword, ChangePassword, true)
+        .use(Routes.Messenger, Messenger, true)
+        .use(Routes.Error404, Error404, true)
+        .use(Routes.Error500, Error500, true).start()
 });

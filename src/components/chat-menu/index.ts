@@ -20,10 +20,11 @@ export default class ChatMenu extends Block {
             }
             menu.setAttribute('data-visible', menu.getAttribute('data-visible') === 'false' ? 'true' : 'false')
         })
-        this.children.usersMenu = new UsersMenu({})
+        this.children.usersMenu = new UsersMenu()
         this.children.deleteButton = new Button({
             type: "button",
             text: "Delete chat",
+            negative: true,
             events: {
                 click: () => chatsController.deleteChat(store.getState().selectedChatId!)
             }

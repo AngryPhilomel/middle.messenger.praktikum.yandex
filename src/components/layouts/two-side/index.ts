@@ -2,14 +2,12 @@ import Handlebars from "handlebars";
 import Block from "../../../core/block.ts";
 import tmpl from "./two-side.layout.ts";
 import Link from "../../ui/link";
-import Input from "../../ui/input";
 import SelectedChat from "../../selected-chat";
 import NotSelectedChat from "../../not-selected-chat";
 import ChatsController from "../../../controllers/chats-controller.ts";
 import store, { Store } from "../../../core/store.ts";
 import ChatsList from "../chats-list";
 import { Routes } from "../../../index.ts";
-import Button from "../../ui/button/index.ts";
 import Search from "../../search/index.ts";
 
 interface TwoSideLayoutProps extends Record<string, unknown> { }

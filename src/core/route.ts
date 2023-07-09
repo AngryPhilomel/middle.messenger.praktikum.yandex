@@ -7,7 +7,8 @@ export default class Route {
 
     constructor(
         private pathname: string,
-        private BlockClass: BlockConstructable
+        private BlockClass: BlockConstructable,
+        public isProtected: boolean,
     ) {}
 
     public leave() {

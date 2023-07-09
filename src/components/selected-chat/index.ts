@@ -25,6 +25,11 @@ export default class SelectedChat extends Block<SelectedChatProps> {
                 src: newProps.chat?.avatar,
             });
             this.children.messageFeed = this.createMessageFeed();
+            if (this.props.chat?.created_by === store.getState().user?.id) {
+                this.children.chatMenu = new ChatMenu()
+            } else {
+                this.children.chatMenu = []
+            }
             return true;
         }
         return false;
@@ -35,7 +40,7 @@ export default class SelectedChat extends Block<SelectedChatProps> {
             (message) =>
                 new Message({
                     message,
-                    isMyself: message.user_id === 1,
+                    isMyself: message.user_id === store.getState().user?.id,
                 })
         );
     }
@@ -58,7 +63,6 @@ export default class SelectedChat extends Block<SelectedChatProps> {
             src: this.props.chat?.avatar || undefined,
             small: true,
         });
-        this.children.chatMenu = new ChatMenu({})
         this.children.messageFeed = this.createMessageFeed();
         this.children.message = new Input(
             {

@@ -247,7 +247,6 @@ export default class ProfileLayout extends Block<ProfileLayoutProps> {
                 label: "Display name",
                 type: "text",
                 disabled,
-                rules: [Input.VALIDATE_RULES.REQUIRED],
             },
             {
                 name: "phone",

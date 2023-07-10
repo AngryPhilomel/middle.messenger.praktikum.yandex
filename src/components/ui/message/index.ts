@@ -1,7 +1,7 @@
 import Handlebars from "handlebars";
 import Block from "../../../core/block.ts";
 import tmpl from "./message.tmpl.ts";
-import { ChatMessage } from "../../../core/types.ts";
+import { ChatMessage, UserResponse } from "../../../core/types.ts";
 import toLocalTime from "../../../utils/toLocalTime.ts";
 
 interface MessageProps extends Record<string, unknown> {
@@ -9,6 +9,7 @@ interface MessageProps extends Record<string, unknown> {
     isMyself: boolean;
     isFile: boolean;
     isImage: boolean;
+    user: UserResponse;
 }
 export default class Message extends Block<MessageProps> {
     constructor(props: MessageProps) {

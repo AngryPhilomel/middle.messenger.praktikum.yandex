@@ -6,6 +6,7 @@
     background-color: var(--chat-message);
     border-radius: 8px;
     max-width: 100%;
+    min-width: 150px;
     width: max-content;
 }
 
@@ -13,7 +14,7 @@
     margin: 0;
 }
 
-.message > span {
+.message__timestamp {
     margin-left: auto;
     font-size: 9px;
 }
@@ -27,4 +28,8 @@
     object-fit: cover;
     max-height: 60vh;
     width: 100%;
+}
+
+.message__username {
+    font-size: 12px;
 }

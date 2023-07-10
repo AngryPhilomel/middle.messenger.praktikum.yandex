@@ -4,6 +4,7 @@ import { ChatItem, ChatMessage, STORE_EVENTS, UserResponse } from "./types.ts";
 type State = {
     user: UserResponse | null;
     chats: ChatItem[] | [];
+    chatUsers: UserResponse[];
     chatsFilter: string;
     selectedChatId: number | null;
     messages: ChatMessage[];
@@ -14,6 +15,7 @@ export class Store extends EventBus {
     private state: State = {
         user: null,
         chats: [],
+        chatUsers: [],
         chatsFilter: "",
         selectedChatId: null,
         messages: [],
@@ -26,6 +28,10 @@ export class Store extends EventBus {
 
     public setUser(newUser: UserResponse) {
         this.state.user = newUser;
+    }
+
+    public setChatUsers(users: UserResponse[]) {
+        this.state.chatUsers = users;
     }
 
     public getState() {

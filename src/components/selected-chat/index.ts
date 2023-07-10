@@ -46,6 +46,9 @@ export default class SelectedChat extends Block<SelectedChatProps> {
                     isMyself: message.user_id === store.getState().user?.id,
                     isFile: message.type === "file",
                     isImage: !!message.file?.content_type.match("image"),
+                    user: store
+                        .getState()
+                        .chatUsers.find((user) => user.id === message.user_id)!,
                 })
         );
     }

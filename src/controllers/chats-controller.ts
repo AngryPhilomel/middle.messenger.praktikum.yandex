@@ -8,6 +8,7 @@ class ChatsController {
             const tokenResponse = await chatsApi.getToken(id);
             const userId = store.getState().user?.id || 0;
             await MessagesController.connect(userId, id, tokenResponse.token);
+            await this.getUsers(id);
         }
         store.set({ selectedChatId: id });
     }
@@ -44,6 +45,11 @@ class ChatsController {
             users: [userId],
             chatId,
         });
+    }
+
+    async getUsers(chatId: number) {
+        const users = await chatsApi.getUsers({ id: chatId });
+        store.setChatUsers(users);
     }
 }
 

@@ -1,5 +1,5 @@
 import HttpTransport from "../core/http-transport.js";
-import { ChatItem } from "../core/types.js";
+import { ChatItem, UserResponse } from "../core/types.js";
 
 export interface CreateChatData extends Record<string, string> {
     title: string;
@@ -21,6 +21,9 @@ export interface DeletedChatResponse extends Record<string, unknown> {
 export interface ChangeUsersData extends Record<string, number | number[]> {
     users: number[];
     chatId: number;
+}
+export interface GetUsersData extends Record<string, number | number[]> {
+    id: number;
 }
 
 export class ChatsApi {
@@ -44,6 +47,10 @@ export class ChatsApi {
 
     deleteUsers(data: ChangeUsersData) {
         return this.http.delete("/users", { data });
+    }
+
+    getUsers(data: GetUsersData): Promise<UserResponse[]> {
+        return this.http.get(`/${data.id}/users`);
     }
 
     getToken(id: number): Promise<{ token: string }> {

@@ -4,7 +4,7 @@ import authController from "../controllers/auth-controller.ts";
 import { Routes } from "../index.ts";
 
 export interface BlockConstructable<P extends Record<string, unknown> = any> {
-    new(props: P): Block<P>;
+    new (props: P): Block<P>;
 }
 
 class Router {
@@ -25,7 +25,11 @@ class Router {
         Router.__instance = this;
     }
 
-    public use(pathname: string, block: BlockConstructable, isProtected: boolean) {
+    public use(
+        pathname: string,
+        block: BlockConstructable,
+        isProtected: boolean
+    ) {
         const route = new Route(pathname, block, isProtected);
         this.routes.push(route);
         return this;
@@ -53,9 +57,9 @@ class Router {
 
         if (route.isProtected) {
             try {
-                await authController.getUser()
+                await authController.getUser();
             } catch (e) {
-                this.go(Routes.Login)
+                this.go(Routes.Login);
                 return;
             }
         }

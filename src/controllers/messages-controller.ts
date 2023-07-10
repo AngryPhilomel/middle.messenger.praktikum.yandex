@@ -27,6 +27,13 @@ class MessagesController {
         });
     }
 
+    sendFile(id: number) {
+        this.ws?.send({
+            type: "file",
+            content: id,
+        });
+    }
+
     getOldMessages() {
         this.ws?.send({ type: "get old", content: "0" });
     }

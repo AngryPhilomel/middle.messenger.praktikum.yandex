@@ -5,6 +5,7 @@
     margin: 5px auto 5px 5px;
     background-color: var(--chat-message);
     border-radius: 8px;
+    max-width: 100%;
     width: max-content;
 }
 
@@ -20,4 +21,10 @@
 .message_myself {
     margin: 5px 5px 5px auto;
     background-color: var(--chat-message-myself);
+}
+
+.message_image {
+    object-fit: cover;
+    max-height: 60vh;
+    width: 100%;
 }

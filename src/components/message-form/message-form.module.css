@@ -32,6 +32,10 @@
     background: url("./assets/attach.svg") no-repeat 50% 50%;
 }
 
+.message-form__button_attach > * {
+    display: none;
+}
+
 .message-form__button_send {
     background: url("./assets/send.svg") no-repeat 50% 50% var(--accent-color);
 }

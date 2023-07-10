@@ -7,6 +7,8 @@ import toLocalTime from "../../../utils/toLocalTime.ts";
 interface MessageProps extends Record<string, unknown> {
     message: ChatMessage;
     isMyself: boolean;
+    isFile: boolean;
+    isImage: boolean;
 }
 export default class Message extends Block<MessageProps> {
     constructor(props: MessageProps) {

@@ -33,5 +33,6 @@ window.addEventListener("DOMContentLoaded", async () => {
         .use(Routes.ChangePassword, ChangePassword, true)
         .use(Routes.Messenger, Messenger, true)
         .use(Routes.Error404, Error404, true)
-        .use(Routes.Error500, Error500, true).start()
+        .use(Routes.Error500, Error500, true)
+        .start();
 });

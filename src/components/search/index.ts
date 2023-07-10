@@ -10,6 +10,10 @@ export default class Search extends Block {
         this.children.searchField = new Input({
             placeholder: "Search or create",
             name: "title",
+            events: {
+                input: (e: InputEvent & { target: HTMLInputElement }) =>
+                    chatsController.searchChat(e.target.value),
+            },
         });
         this.children.createButton = new Button({
             type: "submit",

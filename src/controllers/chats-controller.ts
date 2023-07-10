@@ -17,6 +17,10 @@ class ChatsController {
         store.set({ chats });
     }
 
+    async searchChat(q: string) {
+        store.set({ chatsFilter: q });
+    }
+
     async createNewChat(title: string) {
         await chatsApi.createChat({ title });
         await this.getChats();

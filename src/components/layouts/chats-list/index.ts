@@ -15,7 +15,10 @@ export default class ChatsList extends Block<ChatsListProps> {
     }
 
     createChats() {
-        return this.props.chats.map(
+        const f = this.props.chats.filter((chat) =>
+            chat.title.match(store.getState().chatsFilter)
+        );
+        return f.map(
             (chat) =>
                 new Chat({
                     chat,

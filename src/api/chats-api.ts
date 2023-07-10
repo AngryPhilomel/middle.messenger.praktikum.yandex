@@ -56,6 +56,10 @@ export class ChatsApi {
     getToken(id: number): Promise<{ token: string }> {
         return this.http.post(`/token/${id}`);
     }
+
+    updateAvatar(data: FormData) {
+        return this.http.put("/avatar", { data });
+    }
 }
 
 export default new ChatsApi();

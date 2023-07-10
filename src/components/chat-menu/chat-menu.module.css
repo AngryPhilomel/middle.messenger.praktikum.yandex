@@ -34,3 +34,11 @@
 .menu__area[data-visible="false"] {
     visibility: hidden;
 }
+
+.menu__avatar-button {
+    margin-bottom: 4px;
+}
+
+.menu__avatar-button > div {
+    display: none;
+}

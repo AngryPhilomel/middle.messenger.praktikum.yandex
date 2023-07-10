@@ -8,6 +8,11 @@ export class AuthController {
 
     async signIn(data: SignInData) {
         try {
+            await this.api.logout();
+        } catch (e) {
+            console.log(e);
+        }
+        try {
             await this.api.signIn(data);
             this.getUser();
             router.go(Routes.Messenger);
@@ -18,6 +23,12 @@ export class AuthController {
 
     async signUp(data: SignUpData) {
         try {
+            await this.api.logout();
+        } catch (e) {
+            console.log(e);
+        }
+        try {
+            await this.api.logout();
             await this.api.signUp(data);
             this.getUser();
             router.go(Routes.Messenger);

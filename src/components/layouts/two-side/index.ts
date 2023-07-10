@@ -10,7 +10,7 @@ import ChatsList from "../chats-list";
 import { Routes } from "../../../index.ts";
 import Search from "../../search/index.ts";
 
-interface TwoSideLayoutProps extends Record<string, unknown> { }
+interface TwoSideLayoutProps extends Record<string, unknown> {}
 
 export default class TwoSideLayout extends Block<TwoSideLayoutProps> {
     constructor(props: TwoSideLayoutProps) {
@@ -46,7 +46,7 @@ export default class TwoSideLayout extends Block<TwoSideLayoutProps> {
             text: "Profile ❯",
             href: Routes.Profile,
         });
-        this.children.search = new Search({})
+        this.children.search = new Search({});
         this.children.chatsList = new ChatsList({
             chats: store.getState().chats,
         });

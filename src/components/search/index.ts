@@ -6,8 +6,6 @@ import Button from "../ui/button/index.ts";
 import chatsController from "../../controllers/chats-controller.ts";
 
 export default class Search extends Block {
-
-
     init() {
         this.children.searchField = new Input({
             placeholder: "Search or create",
@@ -16,15 +14,15 @@ export default class Search extends Block {
         this.children.createButton = new Button({
             type: "submit",
             text: "Create",
-        })
+        });
 
-        this.on('submit', (e) => {
-            const event = e as SubmitEvent & { target: HTMLFormElement }
-            event.preventDefault()
-            const title = this.children.searchField as Input
-            chatsController.createNewChat(title.getValue())
-            event.target.reset()
-        })
+        this.on("submit", async (e) => {
+            const event = e as SubmitEvent & { target: HTMLFormElement };
+            event.preventDefault();
+            const title = this.children.searchField as Input;
+            await chatsController.createNewChat(title.getValue());
+            event.target.reset();
+        });
     }
 
     render() {

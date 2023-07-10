@@ -3,10 +3,10 @@ import Block from "../../core/block.ts";
 import tmpl from "./selected-chat.tmpl.ts";
 import Avatar from "../ui/avatar";
 import { ChatItem } from "../../core/types.ts";
-import Input from "../ui/input";
 import Message from "../ui/message";
-import store from "../../core/store.ts";
+import store, { Store } from "../../core/store.ts";
 import ChatMenu from "../chat-menu/index.ts";
+import MessageForm from "../message-form";
 
 interface SelectedChatProps extends Record<string, unknown> {
     chat: ChatItem | null;
@@ -14,6 +14,11 @@ interface SelectedChatProps extends Record<string, unknown> {
 export default class SelectedChat extends Block<SelectedChatProps> {
     constructor(props: SelectedChatProps) {
         super(props, "form");
+        store.on(Store.STORE_EVENTS.UPDATE, this.update.bind(this));
+    }
+
+    private async update() {
+        this.children.messageFeed = this.createMessageFeed();
     }
 
     componentDidUpdate(
@@ -24,15 +29,13 @@ export default class SelectedChat extends Block<SelectedChatProps> {
             (this.children.avatar as Avatar).setProps({
                 src: newProps.chat?.avatar,
             });
-            this.children.messageFeed = this.createMessageFeed();
             if (this.props.chat?.created_by === store.getState().user?.id) {
-                this.children.chatMenu = new ChatMenu()
+                this.children.chatMenu = new ChatMenu();
             } else {
-                this.children.chatMenu = []
+                this.children.chatMenu = [];
             }
-            return true;
         }
-        return false;
+        return true;
     }
 
     private createMessageFeed() {
@@ -46,31 +49,11 @@ export default class SelectedChat extends Block<SelectedChatProps> {
     }
 
     init() {
-        this.on("submit", (event) => {
-            const e = event as SubmitEvent & { target: HTMLFormElement };
-            e.preventDefault();
-            const data = new FormData(e.target);
-            const formDataObj: Record<string, unknown> = {};
-            data.forEach((value, key) => {
-                formDataObj[key] = value;
-            });
-            const message = this.children.message as Input;
-            if (!message.validate(message.getValue(), true)) {
-                console.log(formDataObj);
-            }
-        });
         this.children.avatar = new Avatar({
             src: this.props.chat?.avatar || undefined,
             small: true,
         });
-        this.children.messageFeed = this.createMessageFeed();
-        this.children.message = new Input(
-            {
-                name: "message",
-                placeholder: "Message",
-            },
-            [Input.VALIDATE_RULES.REQUIRED]
-        );
+        this.children.message = new MessageForm({});
     }
 
     render() {

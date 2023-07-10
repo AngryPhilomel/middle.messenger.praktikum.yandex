@@ -1,4 +1,3 @@
-
 import HttpTransport from "../core/http-transport.js";
 import { ChatItem } from "../core/types.js";
 
@@ -16,7 +15,7 @@ export interface DeletedChatResponse extends Record<string, unknown> {
         id: number;
         title: string;
         avatar: string;
-    }
+    };
 }
 
 export interface ChangeUsersData extends Record<string, number | number[]> {
@@ -35,20 +34,20 @@ export class ChatsApi {
         return this.http.post(``, { data });
     }
 
-    deleteChat(data: DeleteChatData): Promise<DeleteChatData> {
+    deleteChat(data: DeleteChatData): Promise<DeletedChatResponse> {
         return this.http.delete(``, { data });
     }
 
     addUsers(data: ChangeUsersData) {
-        return this.http.put('/users', {data})
+        return this.http.put("/users", { data });
     }
 
     deleteUsers(data: ChangeUsersData) {
-        return this.http.delete('/users', {data})
+        return this.http.delete("/users", { data });
     }
 
-    getToken(id: number): Promise<[{ token: string }]> {
-        return this.http.post(`/token/${id}`)
+    getToken(id: number): Promise<{ token: string }> {
+        return this.http.post(`/token/${id}`);
     }
 }
 

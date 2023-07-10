@@ -8,18 +8,7 @@ const tmpl = () => `
         <div class="${styles["selected__header__menu"]}">{{{chatMenu}}}</div>
         </div>
         <div class="${styles["selected-messages"]}">{{{messageFeed}}}</div>
-        <form>
-            <div class="${styles["selected__footer"]}">
-                <ul id="attach-menu" class="${styles["selected__footer__attach-menu"]}" data-visible="false">
-                    <li>Photo or Video</li>
-                    <li>File</li>
-                    <li>Location</li>
-                </ul>
-                <button type="button" class="${styles["selected__footer__button"]} ${styles["selected__footer__button_attach"]}"></button>
-                <div class="${styles["selected__footer__input"]}">{{{message}}}</div>
-                <button class="${styles["selected__footer__button"]} ${styles["selected__footer__button_send"]}" type="submit"></button>
-            </div>
-        </form>
+        {{{message}}}
     </div>
 `;
 

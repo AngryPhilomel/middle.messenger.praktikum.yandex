@@ -18,12 +18,12 @@ export default abstract class Block<T extends Record<string, unknown> = any> {
     private eventBus: () => EventBus;
 
     constructor(
-        propsWithChildred: T,
+        propsWithChildren: T,
         private eventQuery: string | null = null
     ) {
         const eventBus = new EventBus();
         const { props: parsedProps, children } =
-            this.getChildrenAndProps(propsWithChildred);
+            this.getChildrenAndProps(propsWithChildren);
         this.events = parsedProps.events as Record<string, Callback>;
         this.children = children;
         this.props = this.makeProxyProps(parsedProps);

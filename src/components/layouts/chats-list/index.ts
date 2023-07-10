@@ -4,7 +4,7 @@ import tmpl from "./chats-list.layout.ts";
 import { ChatItem } from "../../../core/types.ts";
 import Chat from "../../chat";
 import store from "../../../core/store.ts";
-import ChatsController from "../../../controllers/chats-controller.ts";
+import chatsController from "../../../controllers/chats-controller.ts";
 
 interface ChatsListProps extends Record<string, unknown> {
     chats: ChatItem[];
@@ -24,8 +24,8 @@ export default class ChatsList extends Block<ChatsListProps> {
                     chat,
                     isSelected: chat.id === store.getState().selectedChatId,
                     events: {
-                        click: () => {
-                            ChatsController.selectChat(chat.id);
+                        click: async () => {
+                            await chatsController.selectChat(chat.id);
                         },
                     },
                 })

@@ -20,12 +20,13 @@ class ChatsController {
         store.set({ chats });
     }
 
-    async searchChat(q: string) {
+    searchChat(q: string) {
         store.set({ chatsFilter: q });
     }
 
     async createNewChat(title: string) {
         await this.api.createChat({ title });
+        this.searchChat("");
         await this.getChats();
     }
 
@@ -52,6 +53,11 @@ class ChatsController {
     async getUsers(chatId: number) {
         const users = await this.api.getUsers({ id: chatId });
         store.setChatUsers(users);
+    }
+
+    async getUnreadCount(chatId: number) {
+        const unreadCount = await this.api.getUnreadCount({ id: chatId });
+        return unreadCount;
     }
 
     async updateAvatar(data: FormData) {

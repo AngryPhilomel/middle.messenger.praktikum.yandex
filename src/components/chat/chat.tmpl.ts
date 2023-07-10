@@ -13,10 +13,14 @@ const tmpl = (chat: ChatItem, isSelected: boolean) => `
             ${chat.title}
         </span>
         <p class="${styles["chat__message"]}">
-            ${chat.last_message?.content || ''}
+            ${chat.last_message?.content || ""}
         </p>
         <span class="${styles["chat__time"]}">
-            ${chat.last_message?.time ? toLocalTime(chat.last_message?.time) : ''}
+            ${
+                chat.last_message?.time
+                    ? toLocalTime(chat.last_message?.time)
+                    : ""
+            }
         </span>
         ${
             chat.unread_count > 0

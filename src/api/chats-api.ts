@@ -53,6 +53,10 @@ export class ChatsApi {
         return this.http.get(`/${data.id}/users`);
     }
 
+    getUnreadCount(data: GetUsersData): Promise<{ unread_count: number }> {
+        return this.http.get(`/new/${data.id}`);
+    }
+
     getToken(id: number): Promise<{ token: string }> {
         return this.http.post(`/token/${id}`);
     }

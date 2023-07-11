@@ -59,16 +59,20 @@ export default class WsTransport extends EventBus {
         });
 
         socket.addEventListener("message", (message) => {
-            const data = JSON.parse(message.data);
+            try {
+                const data = JSON.parse(message.data);
 
-            if (
-                data.type &&
-                (data.type === "pong" || data.type === "user connected")
-            ) {
-                return;
+                if (
+                    data.type &&
+                    (data.type === "pong" || data.type === "user connected")
+                ) {
+                    return;
+                }
+
+                this.emit(WsTransportEvents.MESSAGE, data);
+            } catch (e) {
+                console.log(e);
             }
-
-            this.emit(WsTransportEvents.MESSAGE, data);
         });
     }
 

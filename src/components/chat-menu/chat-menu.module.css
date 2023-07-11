@@ -1,44 +1,44 @@
 .menu {
-    position: relative;
-    height: 28px;
+  position: relative;
+  height: 28px;
 }
 
 .menu__button {
-    margin-left: auto;
-    background: url("./assets/menu.svg") no-repeat 50% 50%;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    border: none;
-    outline: none;
+  margin-left: auto;
+  background: url("./assets/menu.svg") no-repeat 50% 50%;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
 }
 
 .menu__button:hover {
-    background-color: var(--chat-focus);
+  background-color: var(--chat-focus);
 }
 
 .menu__area {
-    position: absolute;
-    width: 250px;
-    background-color: var(--background-color-tertiary);
-    padding: 20px;
-    border-radius: 12px;
-    top: 45px;
-    right: 14px;
+  position: absolute;
+  width: 250px;
+  background-color: var(--background-color-tertiary);
+  padding: 20px;
+  border-radius: 12px;
+  top: 45px;
+  right: 14px;
 }
 
 .menu__area[data-visible="true"] {
-    visibility: visible;
+  visibility: visible;
 }
 
 .menu__area[data-visible="false"] {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .menu__avatar-button {
-    margin-bottom: 4px;
+  margin-bottom: 4px;
 }
 
 .menu__avatar-button > div {
-    display: none;
+  display: none;
 }

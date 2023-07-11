@@ -1,17 +1,17 @@
 .link {
-    color: var(--accent-color);
-    text-decoration: none;
-    outline: none;
+  color: var(--accent-color);
+  text-decoration: none;
+  outline: none;
 }
 
 .link_negative {
-    color: var(--error-color);
+  color: var(--error-color);
 }
 
 .link:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .link:focus {
-    text-decoration: underline;
+  text-decoration: underline;
 }

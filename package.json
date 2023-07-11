@@ -18,6 +18,8 @@
     "preview": "vite preview",
     "lint": "npm run lint:script && npm run lint:styles",
     "lint:script": "eslint .",
+    "prettier": "prettier ./src --check",
+    "prettier:fix": "prettier ./src --write",
     "lint:script:fix": "eslint . --fix",
     "lint:styles": "stylelint ./**/*.css",
     "lint:styles:fix": "stylelint ./**/*.css --fix"

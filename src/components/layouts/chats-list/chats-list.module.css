@@ -1,6 +1,6 @@
 .chats-list {
-    overflow: scroll;
-    height: calc(100vh - var(--chat-header-height));
-    margin: 0;
-    padding: 0;
+  overflow: scroll;
+  height: calc(100vh - var(--chat-header-height));
+  margin: 0;
+  padding: 0;
 }

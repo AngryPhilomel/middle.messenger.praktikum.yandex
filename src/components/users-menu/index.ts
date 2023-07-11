@@ -8,29 +8,37 @@ import store from "../../core/store.ts";
 
 export default class UsersMenu extends Block {
     constructor() {
-        super({}, 'button')
+        super({}, "button");
     }
 
     init() {
         this.children.input = new Input({
-            placeholder: 'User ID',
+            placeholder: "User ID",
             type: "number",
-        })
+        });
         this.children.addButton = new Button({
-            type: "submit",
+            type: "button",
             text: "+",
             events: {
-                click: () => chatsController.addUser(parseInt((this.children.input as Input).getValue()), store.getState().selectedChatId!)
-            }
-        })
+                click: () =>
+                    chatsController.addUser(
+                        parseInt((this.children.input as Input).getValue(), 10),
+                        store.getState().selectedChatId!
+                    ),
+            },
+        });
         this.children.deleteButton = new Button({
-            type: "submit",
+            type: "button",
             text: "-",
             negative: true,
             events: {
-                click: () => chatsController.deleteUser(parseInt((this.children.input as Input).getValue()), store.getState().selectedChatId!)
-            }
-        })
+                click: () =>
+                    chatsController.deleteUser(
+                        parseInt((this.children.input as Input).getValue(), 10),
+                        store.getState().selectedChatId!
+                    ),
+            },
+        });
     }
 
     render() {

@@ -8,7 +8,7 @@ const tmpl = () => `
                 disabled={{disabled}}
                 {{/if}}
                 {{#if placeholder}}
-                placeholder={{placeholder}}
+                placeholder="{{placeholder}}"
                 {{/if}}
                 {{#if value}}
                 value={{value}}

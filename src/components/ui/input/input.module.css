@@ -1,65 +1,65 @@
 .input {
-    display: flex;
-    flex-direction: column;
-    margin: 5px 0;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0;
+  width: 100%;
 }
 
 .input__label {
-    font-size: 14px;
-    line-height: 20px;
-    color: var(--text-color-secondary);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text-color-secondary);
 }
 
 .input__input {
-    position: relative;
-    height: 44px;
-    width: 100%;
-    border-radius: 8px;
-    font-size: 17px;
-    line-height: 20px;
-    margin: 4px 0;
-    padding: 6px 12px;
-    border: 1px solid var(--stroke-color);
-    transition: border 300ms ease-in-out;
-    outline: none;
-    background-color: var(--controls-background);
-    color: var(--text-color-main);
+  position: relative;
+  height: 44px;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 17px;
+  line-height: 20px;
+  margin: 4px 0;
+  padding: 6px 12px;
+  border: 1px solid var(--stroke-color);
+  transition: border 300ms ease-in-out;
+  outline: none;
+  background-color: var(--controls-background);
+  color: var(--text-color-main);
 }
 
 .input__input:hover {
-    border: 1px solid var(--controls-hover);
+  border: 1px solid var(--controls-hover);
 }
 
 .input__input:focus {
-    border: 1px solid var(--controls-focus);
+  border: 1px solid var(--controls-focus);
 }
 
 .input__input:disabled {
-    color: var(--text-color-secondary);
-    border: 1px solid var(--stroke-color);
+  color: var(--text-color-secondary);
+  border: 1px solid var(--stroke-color);
 }
 
 .input__error {
-    color: var(--error-color);
-    font-size: 12px;
-    line-height: 16px;
+  color: var(--error-color);
+  font-size: 12px;
+  line-height: 16px;
 }
 
 @media (width >= 768px) {
-    .input__error {
-        max-width: 338px;
-    }
+  .input__error {
+    max-width: 338px;
+  }
 }
 
 .input__input[type="file"]::file-selector-button {
-    margin-top: 3px;
-    border: none;
-    background-color: transparent;
-    color: var(--accent-color);
+  margin-top: 3px;
+  border: none;
+  background-color: transparent;
+  color: var(--accent-color);
 }
 
 .input__input[type="file"]:hover::file-selector-button,
 .input__input[type="file"]:focus::file-selector-button {
-    text-decoration: underline;
+  text-decoration: underline;
 }

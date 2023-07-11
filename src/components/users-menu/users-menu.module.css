@@ -1,0 +1,9 @@
+.users-menu {
+  display: flex;
+  align-items: center;
+}
+
+.users-menu > button {
+  width: 40px;
+  margin-left: 3px;
+}

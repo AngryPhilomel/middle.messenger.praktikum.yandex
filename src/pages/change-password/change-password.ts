@@ -2,18 +2,26 @@ import Handlebars from "handlebars";
 import tmpl from "./change-password.tmpl.ts";
 import Block from "../../core/block.ts";
 import CenteredLayout from "../../components/layouts/centered-layout";
-import Input from "../../components/ui/input";
-import ProfileLayout from "../../components/layouts/profile";
-import Link from "../../components/ui/link";
-import Button from "../../components/ui/button";
-import FormLayout from "../../components/layouts/form";
+import ProfileLayout, {
+    ProfileFormTypes,
+} from "../../components/layouts/profile";
+import { Routes } from "../../index.ts";
+import store from "../../core/store.ts";
 
-interface ChangePasswordProps extends Record<string, unknown> {
-    root: Block;
-}
-class ChangePassword extends Block<ChangePasswordProps> {
-    constructor(props: ChangePasswordProps) {
-        super(props);
+export default class ChangePassword extends Block {
+    constructor() {
+        super({});
+    }
+
+    protected init() {
+        this.children.root = new CenteredLayout({
+            child: new ProfileLayout({
+                backLink: Routes.Profile,
+                user: store.getState().user!,
+                withAvatar: false,
+                profileFormType: ProfileFormTypes.CHANGE_PASSWORD,
+            }),
+        });
     }
 
     render() {
@@ -21,49 +29,3 @@ class ChangePassword extends Block<ChangePasswordProps> {
         return this.compile(template, this.props);
     }
 }
-
-const inputs = [
-    {
-        name: "oldPassword",
-        label: "Old password",
-        type: "password",
-        rules: [Input.VALIDATE_RULES.REQUIRED, Input.VALIDATE_RULES.PASSWORD],
-    },
-    {
-        name: "newPassword",
-        label: "New password",
-        type: "password",
-        rules: [Input.VALIDATE_RULES.REQUIRED, Input.VALIDATE_RULES.PASSWORD],
-    },
-    {
-        name: "newPasswordRepeat",
-        label: "New password repeat",
-        type: "password",
-        rules: [Input.VALIDATE_RULES.REQUIRED, Input.VALIDATE_RULES.PASSWORD],
-    },
-];
-
-const page = new ChangePassword({
-    root: new CenteredLayout({
-        child: new ProfileLayout({
-            backButton: new Link({
-                text: "❮ Back",
-                href: "../profile/profile.html",
-            }),
-            form: new FormLayout({
-                inputs: inputs.map(
-                    (input) => new Input({ ...input }, input.rules)
-                ),
-                buttons: new Button({
-                    text: "Save",
-                    type: "submit",
-                }),
-            }),
-        }),
-    }),
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    const root = document.querySelector("#app");
-    root!.append(page.getContent());
-});

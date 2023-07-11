@@ -1,98 +1,75 @@
+import API, { ChatsApi } from "../api/chats-api.ts";
 import store from "../core/store.ts";
 import MessagesController from "./messages-controller.ts";
 
 class ChatsController {
-    selectChat(id: number) {
-        MessagesController.getMessages();
+    private api: ChatsApi = API;
+
+    async selectChat(id: number | null) {
+        if (id) {
+            const tokenResponse = await this.api.getToken(id);
+            const userId = store.getState().user?.id || 0;
+            await MessagesController.connect(userId, id, tokenResponse.token);
+            await this.getUsers(id);
+        }
         store.set({ selectedChatId: id });
     }
 
-    getChats() {
-        store.set({ chats: mockChats });
+    async getChats() {
+        const chats = await this.api.getChats();
+        store.set({ chats });
+    }
+
+    searchChat(q: string) {
+        store.set({ chatsFilter: q });
+    }
+
+    async createNewChat(title: string) {
+        await this.api.createChat({ title });
+        this.searchChat("");
+        await this.getChats();
+    }
+
+    async deleteChat(chatId: number) {
+        await this.api.deleteChat({ chatId });
+        await this.selectChat(null);
+        await this.getChats();
+    }
+
+    async addUser(userId: number, chatId: number) {
+        await this.api.addUsers({
+            users: [userId],
+            chatId,
+        });
+    }
+
+    async deleteUser(userId: number, chatId: number) {
+        await this.api.deleteUsers({
+            users: [userId],
+            chatId,
+        });
+    }
+
+    async getUsers(chatId: number) {
+        const users = await this.api.getUsers({ id: chatId });
+        store.setChatUsers(users);
+    }
+
+    async getUnreadCount(chatId: number) {
+        const unreadCount = await this.api.getUnreadCount({ id: chatId });
+        return unreadCount;
+    }
+
+    async updateAvatar(data: FormData) {
+        try {
+            await this.api.updateAvatar(data);
+            await this.getChats();
+        } catch (e) {
+            console.log(e);
+        }
     }
 }
 
 const chatsController = new ChatsController();
 
 export default chatsController;
-
-const mockChats = [
-    {
-        id: 1,
-        title: "my-chat",
-        avatar: "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
-        unread_count: 0,
-        last_message: {
-            user: {
-                first_name: "Petya",
-                second_name: "Pupkin",
-                display_name: "PupkinPetya",
-                avatar: "/path/to/avatar.jpg",
-                email: "my@email.com",
-                login: "userLogin",
-                phone: "8(911)-222-33-22",
-            },
-            time: "2023-06-05T14:22:22.000Z",
-            content:
-                "this is message content this is message content this is message content",
-        },
-    },
-    {
-        id: 2,
-        title: "my-chat",
-        avatar: "https://images.unsplash.com/photo-1485875437342-9b39470b3d95?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80",
-        unread_count: 15,
-        last_message: {
-            user: {
-                first_name: "Petya",
-                second_name: "Pupkin",
-                display_name: "PupkinPetya",
-                avatar: "/path/to/avatar.jpg",
-                email: "my@email.com",
-                login: "userLogin",
-                phone: "8(911)-222-33-22",
-            },
-            time: "2020-01-02T14:22:22.000Z",
-            content: "this is message content",
-        },
-    },
-    {
-        id: 3,
-        title: "my-chat",
-        avatar: "https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
-        unread_count: 15,
-        last_message: {
-            user: {
-                first_name: "Petya",
-                second_name: "Pupkin",
-                display_name: "PupkinPetya",
-                avatar: "/path/to/avatar.jpg",
-                email: "my@email.com",
-                login: "userLogin",
-                phone: "8(911)-222-33-22",
-            },
-            time: "2023-06-05T14:22:22.000Z",
-            content:
-                "this is message content this is message content this is message content",
-        },
-    },
-    {
-        id: 4,
-        title: "my-chat",
-        avatar: "https://images.unsplash.com/photo-1485875437342-9b39470b3d95?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80",
-        unread_count: 15,
-        last_message: {
-            user: {
-                first_name: "Petya",
-                second_name: "Pupkin",
-                display_name: "PupkinPetya",
-                avatar: "/path/to/avatar.jpg",
-                email: "my@email.com",
-                login: "userLogin",
-                phone: "8(911)-222-33-22",
-            },
-            time: "2020-01-02T14:22:22.000Z",
-            content: "this is message content",
-        },
-    },
-];

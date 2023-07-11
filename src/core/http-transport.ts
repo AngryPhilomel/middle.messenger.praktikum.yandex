@@ -24,12 +24,16 @@ function queryStringify(data: Record<string, unknown>) {
 interface Options {
     method: string;
     headers: Record<string, string>;
-    data: Record<string, unknown>;
+    data: Record<string, unknown> | FormData;
     timeout: number;
 }
-type HTTPMethod = (url: string, options: Partial<Options>) => Promise<unknown>;
+type HTTPMethod = <R>(url: string, options?: Partial<Options>) => Promise<R>;
 class HTTPTransport {
-    get: HTTPMethod = (url, options = {}) => {
+    private API_URL = "https://ya-praktikum.tech/api/v2";
+
+    constructor(private entity: string) {}
+
+    public get: HTTPMethod = (url, options = {}) => {
         return this.request(
             url,
             { ...options, method: METHODS.GET },
@@ -37,7 +41,7 @@ class HTTPTransport {
         );
     };
 
-    post: HTTPMethod = (url, options = {}) => {
+    public post: HTTPMethod = (url, options = {}) => {
         return this.request(
             url,
             { ...options, method: METHODS.POST },
@@ -45,7 +49,7 @@ class HTTPTransport {
         );
     };
 
-    put: HTTPMethod = (url, options = {}) => {
+    public put: HTTPMethod = (url, options = {}) => {
         return this.request(
             url,
             { ...options, method: METHODS.PUT },
@@ -53,7 +57,7 @@ class HTTPTransport {
         );
     };
 
-    delete: HTTPMethod = (url, options = {}) => {
+    public delete: HTTPMethod = (url, options = {}) => {
         return this.request(
             url,
             { ...options, method: METHODS.DELETE },
@@ -61,11 +65,12 @@ class HTTPTransport {
         );
     };
 
-    request = (
-        url: string,
+    private request<R>(
+        pathname: string,
         options: Partial<Omit<Options, "timeout">> = {},
         timeout = 5000
-    ) => {
+    ): Promise<R> {
+        const url = `${this.API_URL}${this.entity}${pathname}`;
         const { headers = {}, method, data } = options;
 
         return new Promise(function (resolve, reject) {
@@ -79,31 +84,50 @@ class HTTPTransport {
 
             xhr.open(
                 method,
-                isGet && !!data ? `${url}${queryStringify(data)}` : url
+                isGet && !!data
+                    ? `${url}${queryStringify(data as Record<string, unknown>)}`
+                    : url
             );
 
             Object.keys(headers).forEach((key) => {
                 xhr.setRequestHeader(key, headers[key]);
             });
 
+            if (!isGet && !(data instanceof FormData)) {
+                xhr.setRequestHeader("Content-Type", "application/json");
+            }
+
             xhr.onload = function () {
-                resolve(xhr);
+                if (xhr.status < 400) {
+                    if (
+                        xhr
+                            .getResponseHeader("Content-Type")
+                            ?.match("application/json;")
+                    ) {
+                        resolve(JSON.parse(xhr.response) as R);
+                    } else {
+                        resolve(xhr.response as R);
+                    }
+                } else {
+                    reject(xhr.response);
+                }
             };
 
             xhr.onabort = reject;
             xhr.onerror = reject;
 
+            xhr.withCredentials = true;
             xhr.timeout = timeout;
             xhr.ontimeout = reject;
 
             if (isGet || !data) {
                 xhr.send();
-            } else {
+            } else if (data instanceof FormData) {
                 xhr.send(data);
+            } else {
+                xhr.send(JSON.stringify(data));
             }
         });
-    };
+    }
 }
-
-const coolFetch = new HTTPTransport();
-export default coolFetch;
+export default HTTPTransport;

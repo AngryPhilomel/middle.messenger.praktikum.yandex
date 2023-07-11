@@ -4,13 +4,24 @@ import tmpl from "../change-password/change-password.tmpl.ts";
 import CenteredLayout from "../../components/layouts/centered-layout";
 import Link from "../../components/ui/link";
 import ErrorLayout from "../../components/layouts/error";
+import { Routes } from "../../index.ts";
 
-interface Error404Props extends Record<string, unknown> {
-    root: Block;
-}
-class Error404 extends Block<Error404Props> {
-    constructor(props: Error404Props) {
-        super(props);
+export default class Error404 extends Block {
+    constructor() {
+        super({});
+    }
+
+    protected init() {
+        this.children.root = new CenteredLayout({
+            child: new ErrorLayout({
+                backButton: new Link({
+                    text: "Back to app",
+                    href: Routes.Messenger,
+                }),
+                errorCode: "404",
+                errorText: "Not found",
+            }),
+        });
     }
 
     render() {
@@ -18,21 +29,3 @@ class Error404 extends Block<Error404Props> {
         return this.compile(template, this.props);
     }
 }
-
-const page = new Error404({
-    root: new CenteredLayout({
-        child: new ErrorLayout({
-            backButton: new Link({
-                text: "Back to app",
-                href: "../../index.html",
-            }),
-            errorCode: "404",
-            errorText: "Not found",
-        }),
-    }),
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    const root = document.querySelector("#app");
-    root!.append(page.getContent());
-});

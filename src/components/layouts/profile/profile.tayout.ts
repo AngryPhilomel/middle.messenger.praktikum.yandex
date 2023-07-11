@@ -12,11 +12,4 @@ export const tmpl = () => `
             </main>
 `;
 
-// <form>
-//     {{{inputs}}}
-// <div class="${styles["profile-layout__buttons"]}">
-// {{{buttons}}}
-// </div>
-// </form>
-
 export default tmpl;

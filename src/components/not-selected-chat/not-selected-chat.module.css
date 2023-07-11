@@ -1,9 +1,9 @@
 .empty-chat {
-    display: grid;
-    height: 100vh;
+  display: grid;
+  height: 100vh;
 }
 
 .empty-chat > p {
-    place-self: center;
-    color: var(--text-color-secondary);
+  place-self: center;
+  color: var(--text-color-secondary);
 }

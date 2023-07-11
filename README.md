@@ -1,7 +1,18 @@
 ### Учебный проект "Мессенджер" курса "Мидл фронтенд-разработчик"
 
 [FIGMA](https://www.figma.com/file/WRgsIYPeE5HbjkPW8Fg7Ho/Chat_external_link-(Copy)?type=design&node-id=0-1&t=gsQ2fFSjwtv0InAl-0)
-[philomel.netlify.app](https://philomel.netlify.app/)
+
+![Website](https://img.shields.io/website?url=https%3A%2F%2Fphilomel.netlify.app%2F&label=philomel.netlify.app)
+
+
+
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c049fb1e-4c74-46c1-bea8-e4db0ce76715/deploy-status)](https://app.netlify.com/sites/philomel/deploys)
+![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/m/AngryPhilomel/middle.messenger.praktikum.yandex)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/AngryPhilomel/middle.messenger.praktikum.yandex)
+
+
+
 
 #### Устанока и запуск для разработки
 ```shell
@@ -29,13 +40,21 @@ npm run lint:styles # запустить проверки стилей
 npm run lint:styles:fix # запустить проверки стилей с автоисправлением
 ```
 
+#### Реализованный функционал
+
+1. Клиентский роутинг
+1. Регистрация, авторизация, выход из системы
+1. Изменять данные пользователя, изменять аватар, изменять пароль
+1. Список чатов пользователя, создать новый чат, удалить чат, добавить пользователя в чат, удалить пользователя из чата, обновить аватар чата
+1. Отправка сообщений, файлов, изображений
+
 #### Страницы
-1. Main [dev](http://localhost:5173/) | [локально](http://localhost:3000/) | [Netlify](https://philomel.netlify.app/)
-1. 404 [dev](http://localhost:5173/pages/404/404.html) | [локально](http://localhost:3000/pages/404/404.html) | [Netlify](https://philomel.netlify.app/pages/404/404.html)
-1. 500 [dev](http://localhost:5173/pages/500/500.html) | [локально](http://localhost:3000/pages/500/500.html) | [Netlify](https://philomel.netlify.app/pages/500/500.html)
-1. Login [dev](http://localhost:5173/pages/login/login.html) | [локально](http://localhost:3000/pages/login/login.html) | [Netlify](https://philomel.netlify.app/pages/login/login.html)
-1. Register [dev](http://localhost:5173/pages/register/register.html) | [локально](http://localhost:3000/pages/register/register.html) | [Netlify](https://philomel.netlify.app/pages/register/register.html)
-1. Profile [dev](http://localhost:5173/pages/profile/profile.html) | [локально](http://localhost:3000/pages/profile/profile.html) | [Netlify](https://philomel.netlify.app/pages/profile/profile.html)
-1. Change profile [dev](http://localhost:5173/pages/change-profile/change-profile.html) | [локально](http://localhost:3000/pages/change-profile/change-profile.html) | [Netlify](https://philomel.netlify.app/pages/change-profile/change-profile.html)
-1. Change password [dev](http://localhost:5173/pages/change-password/change-password.html) | [локально](http://localhost:3000/pages/change-password/change-password.html) | [Netlify](https://philomel.netlify.app/pages/change-password/change-password.html)
-1. Change avatar [dev](http://localhost:5173/pages/change-avatar/change-avatar.html) | [локально](http://localhost:3000/pages/change-avatar/change-avatar.html) | [Netlify](https://philomel.netlify.app/pages/change-avatar/change-avatar.html)
+1. Login [dev](http://localhost:5173/) | [локально](http://localhost:3000/) | [Netlify](https://philomel.netlify.app/)
+1. Register [dev](http://localhost:5173/sign-up) | [локально](http://localhost:3000/sign-up) | [Netlify](https://philomel.netlify.app/sign-up)
+1. Messenger [dev](http://localhost:5173/messenger) | [локально](http://localhost:3000/messenger) | [Netlify](https://philomel.netlify.app/messenger)
+1. Profile [dev](http://localhost:5173/profile) | [локально](http://localhost:3000/profile) | [Netlify](https://philomel.netlify.app/profile)
+1. Change profile [dev](http://localhost:5173/settings) | [локально](http://localhost:3000/settings) | [Netlify](https://philomel.netlify.app/settings)
+1. Change password [dev](http://localhost:5173/settings-password) | [локально](http://localhost:3000/settings-password) | [Netlify](https://philomel.netlify.app/settings-password)
+1. Change avatar [dev](http://localhost:5173/settings-avatar) | [локально](http://localhost:3000/settings-avatar) | [Netlify](https://philomel.netlify.app/settings-avatar)
+1. 404 [dev](http://localhost:5173/404) | [локально](http://localhost:3000/404) | [Netlify](https://philomel.netlify.app/404)
+1. 500 [dev](http://localhost:5173/500) | [локально](http://localhost:3000/500) | [Netlify](https://philomel.netlify.app/500)

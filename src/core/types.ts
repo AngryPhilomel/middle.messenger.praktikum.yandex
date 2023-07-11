@@ -15,6 +15,7 @@ export type Props = Record<string, unknown>;
 
 export type ChatItem = {
     id: number;
+    created_by: number;
     title: string;
     avatar: string;
     unread_count: number;
@@ -26,6 +27,7 @@ export type ChatItem = {
 };
 
 export type UserResponse = {
+    id: number;
     first_name: string;
     second_name: string;
     display_name: string;

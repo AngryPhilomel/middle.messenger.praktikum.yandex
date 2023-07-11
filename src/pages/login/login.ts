@@ -6,13 +6,58 @@ import Block from "../../core/block.ts";
 import FormLayout from "../../components/layouts/form";
 import Input from "../../components/ui/input";
 import Link from "../../components/ui/link";
+import { Routes } from "../../index.ts";
+import { SignInData } from "../../api/auth-api.ts";
+import authController from "../../controllers/auth-controller.ts";
 
-interface LoginProps extends Record<string, unknown> {
-    root: Block;
-}
-class Login extends Block<LoginProps> {
-    constructor(props: LoginProps) {
-        super(props);
+export default class Login extends Block {
+    constructor() {
+        super({});
+    }
+
+    protected init() {
+        this.children.root = new CenteredLayout({
+            child: new FormLayout({
+                onSubmit: (data: unknown) => {
+                    authController.signIn(data as SignInData);
+                },
+                heading: "Sign in",
+                inputs: [
+                    new Input(
+                        {
+                            label: "Login",
+                            name: "login",
+                            type: "text",
+                        },
+                        [
+                            Input.VALIDATE_RULES.REQUIRED,
+                            Input.VALIDATE_RULES.LOGIN,
+                        ]
+                    ),
+                    new Input(
+                        {
+                            label: "Password",
+                            name: "password",
+                            type: "password",
+                        },
+                        [
+                            Input.VALIDATE_RULES.REQUIRED,
+                            Input.VALIDATE_RULES.PASSWORD,
+                        ]
+                    ),
+                ],
+                buttons: [
+                    new Button({
+                        text: "Sign in",
+                        type: "submit",
+                    }),
+                    new Link({
+                        text: "Sign up",
+                        href: Routes.Register,
+                    }),
+                ],
+            }),
+        });
     }
 
     render() {
@@ -20,47 +65,3 @@ class Login extends Block<LoginProps> {
         return this.compile(template, this.props);
     }
 }
-
-const page = new Login({
-    root: new CenteredLayout({
-        child: new FormLayout({
-            heading: "Sign in",
-            inputs: [
-                new Input(
-                    {
-                        label: "Login",
-                        name: "login",
-                        type: "text",
-                    },
-                    [Input.VALIDATE_RULES.REQUIRED, Input.VALIDATE_RULES.LOGIN]
-                ),
-                new Input(
-                    {
-                        label: "Password",
-                        name: "password",
-                        type: "password",
-                    },
-                    [
-                        Input.VALIDATE_RULES.REQUIRED,
-                        Input.VALIDATE_RULES.PASSWORD,
-                    ]
-                ),
-            ],
-            buttons: [
-                new Button({
-                    text: "Sign in",
-                    type: "submit",
-                }),
-                new Link({
-                    text: "Sign up",
-                    href: "../register/register.html",
-                }),
-            ],
-        }),
-    }),
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    const root = document.querySelector("#app");
-    root!.append(page.getContent());
-});

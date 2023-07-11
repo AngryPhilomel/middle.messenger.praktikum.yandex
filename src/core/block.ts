@@ -18,12 +18,12 @@ export default abstract class Block<T extends Record<string, unknown> = any> {
     private eventBus: () => EventBus;
 
     constructor(
-        propsWithChildred: T,
+        propsWithChildren: T,
         private eventQuery: string | null = null
     ) {
         const eventBus = new EventBus();
         const { props: parsedProps, children } =
-            this.getChildrenAndProps(propsWithChildred);
+            this.getChildrenAndProps(propsWithChildren);
         this.events = parsedProps.events as Record<string, Callback>;
         this.children = children;
         this.props = this.makeProxyProps(parsedProps);
@@ -71,14 +71,18 @@ export default abstract class Block<T extends Record<string, unknown> = any> {
     protected init() {}
 
     private _componentDidMount() {
+        if (Array.isArray(this.children)) {
+            this.children.forEach((child) => child.dispatchComponentDidMount());
+        } else if (this.children instanceof Block<any>) {
+            this.children.dispatchComponentDidMount();
+        }
         this.componentDidMount();
-        this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
 
     public componentDidMount() {}
 
     public dispatchComponentDidMount() {
-        this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+        this._componentDidMount();
     }
 
     private _componentDidUpdate(oldProps: Props, newProps: Props) {

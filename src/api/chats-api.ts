@@ -1,5 +1,5 @@
-import HttpTransport from "../core/http-transport.js";
-import { ChatItem, UserResponse } from "../core/types.js";
+import HttpTransport from "../core/http-transport";
+import { ChatItem, UserResponse } from "../core/types";
 
 export interface CreateChatData extends Record<string, string> {
     title: string;

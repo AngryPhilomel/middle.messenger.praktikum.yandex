@@ -23,19 +23,17 @@ describe("Router", () => {
     });
 
     it("render page on start", () => {
-        Router.use("/", MockPage, false).start();
+        Router.start();
         assert.equal(getContentFake.callCount, 1);
     });
     it("render page on go", () => {
-        Router.use("/", MockPage, false).use("/route", MockGo, false).start();
+        Router.use("/route", MockGo, false);
         Router.go("/route");
         assert.equal(getContentGo.callCount, 1);
     });
     it("don`t render protected page", () => {
         sinon.mock("authController");
-        Router.use("/", MockPage, false)
-            .use("/protected", MockProtected, true)
-            .start();
+        Router.use("/protected", MockProtected, true);
         Router.go("/protected");
         assert.equal(getContentProtected.callCount, 0);
     });

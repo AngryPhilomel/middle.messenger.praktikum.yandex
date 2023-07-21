@@ -16,7 +16,7 @@
     "start": "vite build && node server.js",
     "preview": "vite preview",
     "lint": "npm run lint:script && npm run lint:styles",
-    "lint:script": "eslint .",
+    "lint:script": "eslint ./src/**/*.ts",
     "prettier": "prettier ./src --check",
     "prettier:fix": "prettier ./src --write",
     "lint:script:fix": "eslint . --fix",

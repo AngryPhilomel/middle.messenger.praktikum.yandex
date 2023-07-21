@@ -16,10 +16,15 @@
     "class-methods-use-this": "off",
     "import/prefer-default-export": "off",
     "no-empty-function": "off",
-    "prettier/prettier": ["error", { "tabWidth": 4 }]
+    "prettier/prettier": ["error", { "tabWidth": 4 }],
+    "no-console": "off",
+    "func-names": "off"
   },
   "env": {
     "browser": true,
     "node": true
-  }
+  },
+  "ignorePatterns": [
+    "**/*.spec.ts"
+  ]
 }

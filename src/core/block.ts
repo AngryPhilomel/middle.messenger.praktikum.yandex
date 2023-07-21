@@ -19,7 +19,7 @@ export default abstract class Block<T extends Record<string, unknown> = any> {
 
     constructor(
         propsWithChildren: T,
-        private eventQuery: string | null = null
+        private eventQuery: string | null = null,
     ) {
         const eventBus = new EventBus();
         const { props: parsedProps, children } =
@@ -112,7 +112,7 @@ export default abstract class Block<T extends Record<string, unknown> = any> {
 
     protected compile(
         template: (context: Record<string, unknown>) => string,
-        context: Record<string, unknown>
+        context: Record<string, unknown>,
     ) {
         const contextAndStubs = { ...context };
 
@@ -132,7 +132,7 @@ export default abstract class Block<T extends Record<string, unknown> = any> {
 
         const replaceStub = (component: Block) => {
             const stub = temp.content.querySelector(
-                `[data-id="${component.id}"]`
+                `[data-id="${component.id}"]`,
             );
             if (!stub) {
                 return;

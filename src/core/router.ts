@@ -28,7 +28,7 @@ class Router {
     public use(
         pathname: string,
         block: BlockConstructable,
-        isProtected: boolean
+        isProtected: boolean,
     ) {
         const route = new Route(pathname, block, isProtected);
         this.routes.push(route);

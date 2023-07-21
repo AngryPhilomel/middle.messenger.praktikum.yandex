@@ -22,7 +22,8 @@
     "lint:script:fix": "eslint . --fix",
     "lint:styles": "stylelint ./**/*.css",
     "lint:styles:fix": "stylelint ./**/*.css --fix",
-    "test": "mocha --require ts-node/register --require ./mochaSetup.cjs './src/**/*.spec.ts'"
+    "test": "mocha --require ts-node/register --require ./mochaSetup.cjs './src/**/*.spec.ts'",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@types/chai": "^4.3.5",
@@ -36,8 +37,9 @@
     "eslint": "^8.42.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-prettier": "^5.0.0",
     "express": "^4.18.2",
+    "husky": "^8.0.0",
     "jsdom": "^22.1.0",
     "mocha": "10.2.0",
     "stylelint": "^15.7.0",

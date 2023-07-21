@@ -16,7 +16,7 @@ export default class ChatsList extends Block<ChatsListProps> {
 
     createChats() {
         const f = this.props.chats.filter((chat) =>
-            chat.title.match(store.getState().chatsFilter)
+            chat.title.match(store.getState().chatsFilter),
         );
         return f.map(
             (chat) =>
@@ -28,13 +28,13 @@ export default class ChatsList extends Block<ChatsListProps> {
                             await chatsController.selectChat(chat.id);
                         },
                     },
-                })
+                }),
         );
     }
 
     componentDidUpdate(
         _oldProps: ChatsListProps,
-        _newProps: ChatsListProps
+        _newProps: ChatsListProps,
     ): boolean {
         this.children.chats = this.createChats();
         return true;

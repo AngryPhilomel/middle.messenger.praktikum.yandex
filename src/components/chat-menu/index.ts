@@ -13,7 +13,7 @@ export default class ChatMenu extends Block {
     }
 
     async updateChatAvatar(
-        e: Event & { target: HTMLInputElement & { files: FileList } }
+        e: Event & { target: HTMLInputElement & { files: FileList } },
     ) {
         const img = e.target.files[0];
         if (img.type.match("image")) {
@@ -35,7 +35,9 @@ export default class ChatMenu extends Block {
             }
             menu.setAttribute(
                 "data-visible",
-                menu.getAttribute("data-visible") === "false" ? "true" : "false"
+                menu.getAttribute("data-visible") === "false"
+                    ? "true"
+                    : "false",
             );
         });
         this.children.usersMenu = new UsersMenu();
@@ -50,7 +52,7 @@ export default class ChatMenu extends Block {
             text: "Update Avatar",
             events: {
                 click: (
-                    e: Event & { target: { parentNode: HTMLDivElement } }
+                    e: Event & { target: { parentNode: HTMLDivElement } },
                 ) => {
                     const input = e.target.parentNode.querySelector("input");
                     if (!input) {
@@ -67,7 +69,7 @@ export default class ChatMenu extends Block {
             events: {
                 click: () =>
                     chatsController.deleteChat(
-                        store.getState().selectedChatId!
+                        store.getState().selectedChatId!,
                     ),
             },
         });

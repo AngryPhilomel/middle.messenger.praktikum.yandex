@@ -55,7 +55,7 @@ export default class TwoSideLayout extends Block<TwoSideLayoutProps> {
                 store
                     .getState()
                     .chats.find(
-                        (c) => c.id === store.getState().selectedChatId
+                        (c) => c.id === store.getState().selectedChatId,
                     ) || null,
         });
         this.children.empty = new NotSelectedChat({});

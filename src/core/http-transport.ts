@@ -37,7 +37,7 @@ class HTTPTransport {
         return this.request(
             url,
             { ...options, method: METHODS.GET },
-            options.timeout
+            options.timeout,
         );
     };
 
@@ -45,7 +45,7 @@ class HTTPTransport {
         return this.request(
             url,
             { ...options, method: METHODS.POST },
-            options.timeout
+            options.timeout,
         );
     };
 
@@ -53,7 +53,7 @@ class HTTPTransport {
         return this.request(
             url,
             { ...options, method: METHODS.PUT },
-            options.timeout
+            options.timeout,
         );
     };
 
@@ -61,14 +61,14 @@ class HTTPTransport {
         return this.request(
             url,
             { ...options, method: METHODS.DELETE },
-            options.timeout
+            options.timeout,
         );
     };
 
     private request<R>(
         pathname: string,
         options: Partial<Omit<Options, "timeout">> = {},
-        timeout = 5000
+        timeout = 5000,
     ): Promise<R> {
         const url = `${this.API_URL}${this.entity}${pathname}`;
         const { headers = {}, method, data } = options;
@@ -86,7 +86,7 @@ class HTTPTransport {
                 method,
                 isGet && !!data
                     ? `${url}${queryStringify(data as Record<string, unknown>)}`
-                    : url
+                    : url,
             );
 
             Object.keys(headers).forEach((key) => {

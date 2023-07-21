@@ -7,7 +7,7 @@ import resourcesController from "../../controllers/resources-controller.ts";
 
 export default class MessageForm extends Block {
     async uploadFile(
-        e: Event & { target: HTMLInputElement & { files: FileList } }
+        e: Event & { target: HTMLInputElement & { files: FileList } },
     ) {
         const img = e.target.files[0];
         const formData = new FormData();
@@ -33,7 +33,7 @@ export default class MessageForm extends Block {
                 name: "message",
                 type: "text",
             },
-            [Input.VALIDATE_RULES.REQUIRED]
+            [Input.VALIDATE_RULES.REQUIRED],
         );
 
         this.on("submit", (e) => {
@@ -46,7 +46,7 @@ export default class MessageForm extends Block {
                 setTimeout(() => {
                     (
                         event.target.querySelector(
-                            "input[name='message']"
+                            "input[name='message']",
                         ) as HTMLInputElement
                     )?.focus();
                 }, 100);

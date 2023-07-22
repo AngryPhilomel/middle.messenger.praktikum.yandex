@@ -4,8 +4,8 @@ import toLocalTime from "../../utils/toLocalTime.ts";
 // language=hbs
 const tmpl = (chat: ChatItem, isSelected: boolean) => `
     <li role="button" class="${styles["chat"]} ${
-    isSelected ? styles["chat__selected"] : ""
-}">
+        isSelected ? styles["chat__selected"] : ""
+    }">
         <div class="${styles["chat__avatar"]}">
             {{{avatar}}}
         </div>

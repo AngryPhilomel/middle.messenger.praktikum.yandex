@@ -23,7 +23,10 @@ enum VALIDATE_RULES {
 export default class Input extends Block<InputProps> {
     static VALIDATE_RULES = VALIDATE_RULES;
 
-    constructor(props: InputProps, private rules: VALIDATE_RULES[] = []) {
+    constructor(
+        props: InputProps,
+        private rules: VALIDATE_RULES[] = [],
+    ) {
         super(props, "input");
     }
 
@@ -58,7 +61,7 @@ export default class Input extends Block<InputProps> {
                 case VALIDATE_RULES.PASSWORD:
                     if (
                         !value.match(
-                            /^(?=.*[A-Z]+)(?=.*\d+)[a-z,A-Z\d\-_]{8,40}$/
+                            /^(?=.*[A-Z]+)(?=.*\d+)[a-z,A-Z\d\-_]{8,40}$/,
                         )
                     ) {
                         err = true;
@@ -78,7 +81,7 @@ export default class Input extends Block<InputProps> {
                         !value
                             .toLowerCase()
                             .match(
-                                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                             )
                     ) {
                         err = true;

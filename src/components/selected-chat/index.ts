@@ -23,7 +23,7 @@ export default class SelectedChat extends Block<SelectedChatProps> {
 
     componentDidUpdate(
         oldProps: SelectedChatProps,
-        newProps: SelectedChatProps
+        newProps: SelectedChatProps,
     ): boolean {
         if (JSON.stringify(oldProps) !== JSON.stringify(newProps)) {
             (this.children.avatar as Avatar).setProps({
@@ -49,7 +49,7 @@ export default class SelectedChat extends Block<SelectedChatProps> {
                     user: store
                         .getState()
                         .chatUsers.find((user) => user.id === message.user_id)!,
-                })
+                }),
         );
     }
 

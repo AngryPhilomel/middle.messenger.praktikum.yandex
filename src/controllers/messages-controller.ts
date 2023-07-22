@@ -11,7 +11,7 @@ class MessagesController {
             this.ws = null;
         }
         this.ws = new WsTransport(
-            `wss://ya-praktikum.tech/ws/chats/${userId}/${id}/${token}`
+            `wss://ya-praktikum.tech/ws/chats/${userId}/${id}/${token}`,
         );
 
         await this.ws.connect();
@@ -51,7 +51,7 @@ class MessagesController {
     private subscribe() {
         this.ws?.on(
             WsTransportEvents.MESSAGE,
-            (message: ChatMessage | ChatMessage[]) => this.onMessage(message)
+            (message: ChatMessage | ChatMessage[]) => this.onMessage(message),
         );
     }
 }

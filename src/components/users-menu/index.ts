@@ -23,7 +23,7 @@ export default class UsersMenu extends Block {
                 click: () =>
                     chatsController.addUser(
                         parseInt((this.children.input as Input).getValue(), 10),
-                        store.getState().selectedChatId!
+                        store.getState().selectedChatId!,
                     ),
             },
         });
@@ -35,7 +35,7 @@ export default class UsersMenu extends Block {
                 click: () =>
                     chatsController.deleteUser(
                         parseInt((this.children.input as Input).getValue(), 10),
-                        store.getState().selectedChatId!
+                        store.getState().selectedChatId!,
                     ),
             },
         });

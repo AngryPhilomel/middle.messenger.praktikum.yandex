@@ -56,7 +56,7 @@ export default class FormLayout extends Block<FormProps> {
             this.children.inputs.forEach((input) => {
                 input.on("blur", function (e) {
                     (input as Input).validate(
-                        ((e as FocusEvent).target as HTMLInputElement).value
+                        ((e as FocusEvent).target as HTMLInputElement).value,
                     );
                 });
             });

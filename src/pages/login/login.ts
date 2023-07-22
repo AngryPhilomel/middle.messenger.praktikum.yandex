@@ -32,7 +32,7 @@ export default class Login extends Block {
                         [
                             Input.VALIDATE_RULES.REQUIRED,
                             Input.VALIDATE_RULES.LOGIN,
-                        ]
+                        ],
                     ),
                     new Input(
                         {
@@ -43,7 +43,7 @@ export default class Login extends Block {
                         [
                             Input.VALIDATE_RULES.REQUIRED,
                             Input.VALIDATE_RULES.PASSWORD,
-                        ]
+                        ],
                     ),
                 ],
                 buttons: [

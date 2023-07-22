@@ -18,7 +18,7 @@ export default class Message extends Block<MessageProps> {
 
     render() {
         const template = Handlebars.compile(
-            tmpl(toLocalTime(this.props.message.time))
+            tmpl(toLocalTime(this.props.message.time)),
         );
         return this.compile(template, this.props);
     }

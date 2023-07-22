@@ -53,7 +53,7 @@ export default class ProfileLayout extends Block<ProfileLayoutProps> {
         this.children.form = new FormLayout({
             onSubmit: this.getSubmitAction(this.props.profileFormType),
             inputs: this.getInputsFabric(this.props.profileFormType)(
-                store.getState().user!
+                store.getState().user!,
             ).map((input) => new Input({ ...input }, input.rules)),
             buttons: this.getButtons(this.props.profileFormType),
         });
@@ -149,7 +149,7 @@ export default class ProfileLayout extends Block<ProfileLayoutProps> {
     }
 
     private showAvatar(
-        e: Event & { target: HTMLInputElement & { files: FileList } }
+        e: Event & { target: HTMLInputElement & { files: FileList } },
     ) {
         const img = e.target.files[0];
         const reader = new FileReader();
